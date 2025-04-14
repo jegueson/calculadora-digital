@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from 'next/script';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,20 +33,20 @@ export default function RootLayout({
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
-                  <a href="/" className="text-xl font-bold text-gray-800">
+                  <Link href="/" className="text-xl font-bold text-gray-800">
                     Calculadora Digital
-                  </a>
+                  </Link>
                 </div>
                 <div className="hidden md:ml-6 md:flex md:space-x-8">
-                  <a href="/" className="inline-flex items-center px-1 pt-1 text-gray-600 hover:text-gray-800">
+                  <Link href="/" className="inline-flex items-center px-1 pt-1 text-gray-600 hover:text-gray-800">
                     Calculadora Simples
-                  </a>
-                  <a href="/peso-ideal" className="inline-flex items-center px-1 pt-1 text-gray-600 hover:text-gray-800">
+                  </Link>
+                  <Link href="/peso-ideal" className="inline-flex items-center px-1 pt-1 text-gray-600 hover:text-gray-800">
                     Calculadora de Peso Ideal
-                  </a>
-                  <a href="/ovulacao" className="inline-flex items-center px-1 pt-1 text-gray-600 hover:text-gray-800">
+                  </Link>
+                  <Link href="/ovulacao" className="inline-flex items-center px-1 pt-1 text-gray-600 hover:text-gray-800">
                     Calculadora de Ovulação
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
