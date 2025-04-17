@@ -6,21 +6,23 @@ import Script from 'next/script';
 import MobileMenu from '@/components/MobileMenu';
 import DesktopNavigation from '@/components/DesktopNavigation';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: "Calculadora Digital Online - Simples e Fácil de Usar",
-  description: "Calculadora digital online gratuita com funções básicas. Ideal para cálculos rápidos e eficientes diretamente no seu navegador.",
-  keywords: "calculadora online, calculadora digital, calculadora grátis, calculadora simples",
+  title: "Calculadora Digital Online",
+  description: "Calculadora digital online gratuita com funções básicas e avançadas. Fácil de usar, sem necessidade de instalação.",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <html lang="pt-BR" className={inter.className} suppressHydrationWarning>
       <head>
         {/* Google Tag Manager */}
         <Script id="google-tag-manager" strategy="afterInteractive">
