@@ -4,10 +4,10 @@ const nextConfig = {
     ignoreDuringBuilds: true
   },
   output: 'export',
-  basePath: '/calculadora-digital',
   images: {
     unoptimized: true,
   },
+  basePath: '/calculadora_digital',
 };
 
 module.exports = nextConfig; 
