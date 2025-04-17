@@ -5,6 +5,11 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,14 +29,20 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Upload build artifact
+      - name: Upload build artifact for FTP
         uses: actions/upload-artifact@v3
         with:
           name: build-output
           path: build/
           retention-days: 1
 
-  deploy:
+      - name: Upload build artifact for Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/
+          retention-days: 1
+
+  deploy-ftp:
     needs: build
     runs-on: ubuntu-latest
     
@@ -42,11 +53,24 @@ jobs:
           name: build-output
           path: build
 
-      - name: Deploy to production
+      - name: Deploy to production via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: build/
-          server-dir: /public_html/ 
+          server-dir: /public_html/
+
+  deploy-pages:
+    needs: build
+    runs-on: ubuntu-latest
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 
