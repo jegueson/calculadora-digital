@@ -1,0 +1,30 @@
+RewriteEngine On
+
+# Handle requests for HTML files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Handle direct .html requests
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*\.html\ HTTP/
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+
+# If the requested resource doesn't exist, try index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+# Allow access to static files
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|json|woff|woff2|ttf|svg)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Set proper MIME types
+AddType application/javascript .js
+AddType text/css .css
+AddType application/json .json
+
+# Enable CORS
+Header set Access-Control-Allow-Origin "*" 
