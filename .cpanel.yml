@@ -1,0 +1,9 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/calcu790/public_html/stage
+    # Copy all files and directories recursively
+    - /bin/cp -R * $DEPLOYPATH
+    # Exclude copying the .git directory and .cpanel.yml file itself
+    - /bin/rm -rf $DEPLOYPATH/.git
+    - /bin/rm -f $DEPLOYPATH/.cpanel.yml 
