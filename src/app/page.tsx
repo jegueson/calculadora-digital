@@ -1,3 +1,4 @@
+import React from 'react';
 import Calculator from '@/components/Calculator';
 
 export default function Home() {
@@ -8,100 +9,89 @@ export default function Home() {
           Calculadora Digital Online
         </h1>
         
-        <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <p className="text-gray-600 mb-6 text-center">
+            Realize cálculos básicos e avançados com facilidade e precisão. Interface intuitiva e resultados instantâneos.
+          </p>
           <Calculator />
         </div>
 
-        <article className="mt-8 text-center text-gray-600">
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Calculadora Online Grátis</h2>
-            <div className="mb-4">
-              Bem-vindo à Calculadora Digital, sua ferramenta gratuita, rápida e fácil de usar para fazer todos os tipos de cálculos online. Com nossa calculadora, você pode resolver operações matemáticas simples e avançadas sem precisar instalar nada no seu dispositivo. Aproveite a praticidade e a precisão de uma calculadora completa, disponível a qualquer hora e em qualquer lugar!
-            </div>
-          </section>
+        <div className="bg-white rounded-lg shadow-lg p-6 mt-8">
+          <article className="prose prose-lg mx-auto">
+            <h2 className="text-2xl font-semibold mb-4">Bem-vindo à Calculadora Digital</h2>
+            <p className="mb-4">
+              Nossa calculadora digital online é uma ferramenta gratuita, rápida e fácil de usar para todos os tipos de cálculos.
+              Desenvolvida para oferecer praticidade e precisão, ela é perfeita para estudantes, profissionais e qualquer pessoa
+              que precise realizar cálculos no dia a dia.
+            </p>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">O que é uma Calculadora Digital Online?</h2>
-            <div className="mb-4">
-              Uma calculadora online é uma ferramenta digital que permite realizar cálculos matemáticos diretamente do navegador, sem a necessidade de baixar nenhum aplicativo. Ela é ideal para estudantes, profissionais, professores e qualquer pessoa que precise fazer contas de forma rápida, prática e segura. Nossa calculadora digital oferece diversas funções, desde operações básicas até cálculos mais complexos, tudo em uma interface intuitiva e fácil de usar.
-            </div>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Como Usar a Calculadora Digital?</h2>
-            <div className="mb-4">Usar nossa calculadora online é muito simples:</div>
-            <ul className="list-disc text-left pl-8 mb-4">
-              <li>Digite os números: Utilize o teclado virtual ou o teclado do seu próprio computador/celular.</li>
-              <li>Escolha a operação: Selecione entre adição (+), subtração (−), multiplicação (×), divisão (÷) ou outras funções disponíveis.</li>
-              <li>Veja o resultado: O cálculo é feito automaticamente e o resultado aparece na tela.</li>
-              <li>Limpe e recomece: Clique em "C" para limpar e fazer um novo cálculo.</li>
+            <h3 className="text-xl font-semibold mt-6 mb-3">Recursos Principais</h3>
+            <ul className="list-disc pl-6 mb-6">
+              <li><strong>Interface Intuitiva:</strong> Design moderno e fácil de usar</li>
+              <li><strong>Cálculos Instantâneos:</strong> Resultados em tempo real</li>
+              <li><strong>Histórico de Operações:</strong> Acompanhe seus cálculos anteriores</li>
+              <li><strong>Funções Avançadas:</strong> Além das operações básicas</li>
+              <li><strong>Acesso Gratuito:</strong> Sem necessidade de cadastro ou instalação</li>
             </ul>
-          </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Exemplo prático:</h2>
-            <div className="mb-4">
-              Se você deseja somar 25 + 17, basta digitar "25", clicar em "+", digitar "17" e pressionar "=". O resultado, 42, aparecerá imediatamente.
+            <h3 className="text-xl font-semibold mt-6 mb-3">Nossas Calculadoras Especializadas</h3>
+            <ul className="list-disc pl-6 mb-6">
+              <li>
+                <strong>Calculadora de Porcentagem:</strong> Ideal para descontos, aumentos e variações percentuais
+              </li>
+              <li>
+                <strong>Calculadora de Juros Compostos:</strong> Para análise de investimentos e empréstimos
+              </li>
+              <li>
+                <strong>Calculadora de Financiamento Imobiliário:</strong> Simule prestações e planeje sua aquisição
+              </li>
+              <li>
+                <strong>Calculadora Científica:</strong> Para cálculos matemáticos avançados
+              </li>
+              <li>
+                <strong>Calculadora de Payback:</strong> Avalie o retorno de investimentos
+              </li>
+            </ul>
+
+            <h3 className="text-xl font-semibold mt-6 mb-3">Como Usar</h3>
+            <ul className="list-disc pl-6 mb-6">
+              <li><strong>Operações Básicas:</strong> Digite os números e use os botões de operação (+, -, ×, ÷)</li>
+              <li><strong>Porcentagem:</strong> Use o botão % para cálculos percentuais</li>
+              <li><strong>Memória:</strong> Utilize M+, M-, MR para armazenar e recuperar valores</li>
+              <li><strong>Limpar:</strong> C para limpar tudo, CE para limpar última entrada</li>
+              <li><strong>Resultado:</strong> Pressione = ou Enter para ver o resultado</li>
+            </ul>
+
+            <h3 className="text-xl font-semibold mt-6 mb-3">Aplicações Práticas</h3>
+            <ul className="list-disc pl-6 mb-6">
+              <li><strong>Estudos:</strong> Resolução de exercícios e verificação de resultados</li>
+              <li><strong>Finanças Pessoais:</strong> Cálculo de descontos, juros e orçamentos</li>
+              <li><strong>Trabalho:</strong> Cálculos profissionais e análises rápidas</li>
+              <li><strong>Compras:</strong> Verificação de preços e descontos</li>
+              <li><strong>Planejamento:</strong> Orçamentos e estimativas</li>
+            </ul>
+
+            <h3 className="text-xl font-semibold mt-6 mb-3">Dicas de Uso</h3>
+            <ul className="list-disc pl-6 mb-6">
+              <li>Utilize o teclado numérico para entrada mais rápida de números</li>
+              <li>Aproveite o histórico para verificar cálculos anteriores</li>
+              <li>Explore nossas calculadoras especializadas para tarefas específicas</li>
+              <li>Salve nossa página nos favoritos para acesso rápido</li>
+              <li>Compartilhe com amigos e colegas que possam precisar</li>
+            </ul>
+
+            <div className="bg-blue-50 p-4 rounded-lg mt-8">
+              <h3 className="text-xl font-semibold mb-3 text-blue-800">Por que Escolher Nossa Calculadora?</h3>
+              <ul className="list-disc pl-6 text-blue-700">
+                <li>Totalmente gratuita e sem anúncios intrusivos</li>
+                <li>Funciona em qualquer dispositivo com acesso à internet</li>
+                <li>Interface limpa e profissional</li>
+                <li>Atualizações regulares com novos recursos</li>
+                <li>Suporte a diferentes tipos de cálculos</li>
+              </ul>
             </div>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Tipos de Cálculos Disponíveis</h2>
-            <div className="mb-4">Nossa calculadora digital oferece diversas funções para facilitar o seu dia a dia:</div>
-            <ul className="list-disc text-left pl-8 mb-4">
-              <li>Adição: Some dois ou mais números facilmente.</li>
-              <li>Subtração: Calcule diferenças de valores de forma rápida.</li>
-              <li>Multiplicação: Resolva operações de multiplicação com precisão.</li>
-              <li>Divisão: Divida números e obtenha resultados exatos.</li>
-              <li>Porcentagem: Calcule descontos, acréscimos e variações percentuais.</li>
-              <li>Cálculos científicos: Funções como raiz quadrada, potência e muito mais (disponível na calculadora científica).</li>
-            </ul>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Perguntas Frequentes</h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-bold mb-2">Como funciona a calculadora online?</h3>
-                <div>Basta acessar o site, digitar os números e escolher a operação desejada. O resultado aparece instantaneamente.</div>
-              </div>
-              <div>
-                <h3 className="font-bold mb-2">Posso usar a calculadora no celular?</h3>
-                <div>Sim! Nossa calculadora é totalmente responsiva e funciona perfeitamente em celulares, tablets e computadores.</div>
-              </div>
-              <div>
-                <h3 className="font-bold mb-2">Qual a diferença entre calculadora simples e científica?</h3>
-                <div>A calculadora simples realiza operações básicas (adição, subtração, multiplicação e divisão). Já a calculadora científica oferece funções avançadas, como potências, raízes, trigonometria e muito mais.</div>
-              </div>
-            </div>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Outras Calculadoras Disponíveis</h2>
-            <div className="mb-4">Além da calculadora padrão, oferecemos outras ferramentas úteis para você:</div>
-            <ul className="list-disc text-left pl-8 mb-4">
-              <li>Calculadora de IMC: Descubra seu Índice de Massa Corporal.</li>
-              <li>Calculadora de Porcentagem: Calcule descontos e acréscimos facilmente.</li>
-              <li>Calculadora de Regra de Três: Resolva proporções de maneira simples.</li>
-              <li>Calculadora de Juros: Faça cálculos financeiros rapidamente.</li>
-            </ul>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Dicas para Aproveitar ao Máximo sua Calculadora Digital</h2>
-            <ul className="list-disc text-left pl-8 mb-4">
-              <li>Salve o site nos favoritos para acessar sempre que precisar.</li>
-              <li>Use a calculadora em todas as suas atividades: estudos, trabalho, compras e finanças pessoais.</li>
-              <li>Experimente as diferentes funções e descubra qual delas atende melhor às suas necessidades.</li>
-              <li>Compartilhe a Calculadora Digital com amigos, colegas e familiares!</li>
-            </ul>
-          </section>
-
-          {/* Ad space */}
-          <div className="my-8 p-4 bg-gray-200 rounded">
-           
-          </div>
-        </article>
+          </article>
+        </div>
       </div>
     </main>
   );
