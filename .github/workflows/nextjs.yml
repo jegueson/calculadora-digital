@@ -2,7 +2,7 @@ name: Deploy Next.js site to Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["Live"]
   workflow_dispatch:
 
 permissions:
@@ -29,6 +29,7 @@ jobs:
         uses: actions/configure-pages@v4
         with:
           static_site_generator: next
+          enablement: true
       - name: Install dependencies
         run: npm ci
       - name: Build with Next.js
