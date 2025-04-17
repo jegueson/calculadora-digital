@@ -39,6 +39,11 @@ export default function PaybackCalculator() {
     cashFlows: Array(12).fill(0),
   });
 
+  const [displayValues, setDisplayValues] = useState({
+    initialInvestment: '100.000,00',
+    cashFlows: Array(12).fill('0,00'),
+  });
+
   const [results, setResults] = useState<{
     regularPayback: number | null;
     discountedPayback: number | null;
@@ -47,13 +52,34 @@ export default function PaybackCalculator() {
 
   useEffect(() => {
     setMounted(true);
+    // Initialize display values
+    setDisplayValues({
+      initialInvestment: formatInputCurrency(formData.initialInvestment),
+      cashFlows: formData.cashFlows.map(value => formatInputCurrency(value)),
+    });
   }, []);
 
   const formatCurrency = (value: number): string => {
     return value.toLocaleString('pt-BR', {
       style: 'currency',
       currency: 'BRL',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     });
+  };
+
+  const formatInputCurrency = (value: number): string => {
+    return value.toLocaleString('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  };
+
+  const handleCurrencyInput = (value: string): number => {
+    // Remove any non-digit character and convert to number
+    const numericValue = value.replace(/\D/g, '');
+    // Convert to decimal (divide by 100 since we're working with cents)
+    return numericValue ? parseInt(numericValue, 10) / 100 : 0;
   };
 
   const calculatePaybackPeriods = () => {
@@ -105,18 +131,39 @@ export default function PaybackCalculator() {
         ...prev,
         numberOfFlows: numFlows
       }));
+    } else if (field === 'discountRate') {
+      const rate = parseFloat(value) || 0;
+      setFormData(prev => ({
+        ...prev,
+        discountRate: rate
+      }));
+    } else if (field === 'initialInvestment') {
+      const numericValue = handleCurrencyInput(value);
+      setFormData(prev => ({
+        ...prev,
+        initialInvestment: numericValue
+      }));
+      setDisplayValues(prev => ({
+        ...prev,
+        initialInvestment: formatInputCurrency(numericValue)
+      }));
     } else if (field.startsWith('cashFlow')) {
       const index = parseInt(field.replace('cashFlow', ''));
+      const numericValue = handleCurrencyInput(value);
+      
       const newCashFlows = [...formData.cashFlows];
-      newCashFlows[index] = parseFloat(value.replace(/[^0-9.-]/g, '')) || 0;
+      newCashFlows[index] = numericValue;
+      
+      const newDisplayCashFlows = [...displayValues.cashFlows];
+      newDisplayCashFlows[index] = formatInputCurrency(numericValue);
+
       setFormData(prev => ({
         ...prev,
         cashFlows: newCashFlows
       }));
-    } else {
-      setFormData(prev => ({
+      setDisplayValues(prev => ({
         ...prev,
-        [field]: parseFloat(value.replace(/[^0-9.-]/g, '')) || 0
+        cashFlows: newDisplayCashFlows
       }));
     }
   };
@@ -152,12 +199,18 @@ export default function PaybackCalculator() {
               <label className="block text-sm font-medium text-gray-700">
                 Investimento Inicial
               </label>
-              <input
-                type="text"
-                value={formatCurrency(formData.initialInvestment)}
-                onChange={(e) => handleInputChange('initialInvestment', e.target.value)}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              />
+              <div className="relative mt-1">
+                <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+                  R$
+                </span>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  value={displayValues.initialInvestment}
+                  onChange={(e) => handleInputChange('initialInvestment', e.target.value)}
+                  className="pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                />
+              </div>
             </div>
 
             <div>
@@ -192,12 +245,18 @@ export default function PaybackCalculator() {
                 <label className="block text-sm font-medium text-gray-700">
                   Fluxo de Caixa {index + 1}
                 </label>
-                <input
-                  type="text"
-                  value={formatCurrency(formData.cashFlows[index])}
-                  onChange={(e) => handleInputChange(`cashFlow${index}`, e.target.value)}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                />
+                <div className="relative mt-1">
+                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+                    R$
+                  </span>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    value={displayValues.cashFlows[index]}
+                    onChange={(e) => handleInputChange(`cashFlow${index}`, e.target.value)}
+                    className="pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  />
+                </div>
               </div>
             ))}
 
@@ -241,7 +300,9 @@ export default function PaybackCalculator() {
                       y: {
                         beginAtZero: true,
                         ticks: {
-                          callback: (value) => formatCurrency(Number(value)),
+                          callback: function(value) {
+                            return formatCurrency(Number(value));
+                          },
                         },
                       },
                     },

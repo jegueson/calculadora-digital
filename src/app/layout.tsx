@@ -4,6 +4,7 @@ import "./globals.css";
 import Link from 'next/link';
 import Script from 'next/script';
 import MobileMenu from '@/components/MobileMenu';
+import DesktopNavigation from '@/components/DesktopNavigation';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -58,70 +59,7 @@ export default function RootLayout({
                   </Link>
                 </div>
                 
-                <div className="hidden md:flex md:items-center md:ml-6 space-x-4">
-                  {/* Calculadoras Dropdown */}
-                  <div className="relative group">
-                    <button className="inline-flex items-center px-1 pt-1 text-gray-600 hover:text-gray-800">
-                      Calculadoras
-                      <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                    <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                      <div className="py-1">
-                        <Link href="/calculadora-cientifica" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                          Calculadora Científica
-                        </Link>
-                        <Link href="/calculadora-porcentagem" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                          Calculadora de Porcentagem
-                        </Link>
-                        <Link href="/gerador-senha" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                          Gerador de Senha
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Finanças Dropdown */}
-                  <div className="relative group">
-                    <button className="inline-flex items-center px-1 pt-1 text-gray-600 hover:text-gray-800">
-                      Finanças
-                      <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                    <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                      <div className="py-1">
-                        <Link href="/calculo-financiamento-imobiliario" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                          Cálculo de Financiamento Imobiliário
-                        </Link>
-                        <Link href="/juros-compostos" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                          Juros Compostos
-                        </Link>
-                        <Link href="/calculo-payback" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                          Cálculo de Payback
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Outras Dropdown */}
-                  <div className="relative group">
-                    <button className="inline-flex items-center px-1 pt-1 text-gray-600 hover:text-gray-800">
-                      Outras
-                      <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                    <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                      <div className="py-1">
-                        <Link href="/calendario-feriados" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                          Calendário de Feriados
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <DesktopNavigation />
               </div>
 
               {/* Mobile menu */}
