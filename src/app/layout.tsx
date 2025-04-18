@@ -34,12 +34,6 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-5LSC26G');
           `}
         </Script>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR-CLIENT-ID"
-          crossOrigin="anonymous"
-          strategy="lazyOnload"
-        />
       </head>
       <body className={inter.className} suppressHydrationWarning>
         {/* Google Tag Manager (noscript) */}
