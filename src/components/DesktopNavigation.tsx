@@ -27,6 +27,12 @@ export default function DesktopNavigation() {
             <Link href="/calculadora-imposto-renda" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Calculadora de IR
             </Link>
+            <Link href="/calculadora-imc" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              Calculadora de IMC
+            </Link>
+            <Link href="/calculadora-fgts" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              Calculadora de FGTS
+            </Link>
             <Link href="/gerador-senha" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Gerador de Senha
             </Link>
