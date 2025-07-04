@@ -33,6 +33,9 @@ export default function DesktopNavigation() {
             <Link href="/calculadora-fgts" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Calculadora de FGTS
             </Link>
+            <Link href="/calculadora-calorias" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              Calculadora de Calorias
+            </Link>
             <Link href="/gerador-senha" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Gerador de Senha
             </Link>
@@ -61,6 +64,9 @@ export default function DesktopNavigation() {
             </Link>
             <Link href="/calculo-payback" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Cálculo de Payback
+            </Link>
+            <Link href="/calculadora-aposentadoria" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              Calculadora de Aposentadoria
             </Link>
           </div>
         </div>
