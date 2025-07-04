@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://calculadora-digital.com.br/sitemap.xml
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Disallow admin and private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /_next/
+Disallow: /build/
+
+# Allow important calculator pages
+Allow: /calculadora-cientifica/
+Allow: /calculadora-porcentagem/
+Allow: /calculo-financiamento-imobiliario/
+Allow: /juros-compostos/
+Allow: /calculo-payback/
+Allow: /gerador-senha/
+
+# Block specific bots that might be problematic
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10 

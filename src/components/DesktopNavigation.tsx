@@ -24,6 +24,9 @@ export default function DesktopNavigation() {
             <Link href="/calculadora-porcentagem" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Calculadora de Porcentagem
             </Link>
+            <Link href="/calculadora-imposto-renda" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              Calculadora de IR
+            </Link>
             <Link href="/gerador-senha" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Gerador de Senha
             </Link>
