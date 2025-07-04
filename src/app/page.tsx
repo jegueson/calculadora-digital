@@ -16,6 +16,59 @@ export default function Home() {
           <Calculator />
         </div>
 
+        {/* Popular Calculators Section - Mobile Optimized */}
+        <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
+            🔥 Calculadoras Mais Populares
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <a href="/calculadora-imposto-renda/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-blue-50 hover:bg-blue-100">
+              <div className="text-3xl mb-2">📊</div>
+              <h3 className="font-semibold text-gray-800 mb-1">Imposto de Renda 2024</h3>
+              <p className="text-sm text-gray-600">Calcule seu IR com as regras atualizadas</p>
+            </a>
+            
+            <a href="/calculadora-imc/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-green-50 hover:bg-green-100">
+              <div className="text-3xl mb-2">⚖️</div>
+              <h3 className="font-semibold text-gray-800 mb-1">Calculadora de IMC</h3>
+              <p className="text-sm text-gray-600">Avalie seu peso ideal e saúde</p>
+            </a>
+            
+            <a href="/calculadora-fgts/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-yellow-50 hover:bg-yellow-100">
+              <div className="text-3xl mb-2">🏦</div>
+              <h3 className="font-semibold text-gray-800 mb-1">FGTS 2024</h3>
+              <p className="text-sm text-gray-600">Simule saldo e saques do FGTS</p>
+            </a>
+            
+            <a href="/calculadora-aposentadoria/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-purple-50 hover:bg-purple-100">
+              <div className="text-3xl mb-2">🏛️</div>
+              <h3 className="font-semibold text-gray-800 mb-1">Aposentadoria</h3>
+              <p className="text-sm text-gray-600">Planeje sua aposentadoria pelo INSS</p>
+            </a>
+            
+            <a href="/calculadora-calorias/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-red-50 hover:bg-red-100">
+              <div className="text-3xl mb-2">🍎</div>
+              <h3 className="font-semibold text-gray-800 mb-1">Calorias & Dieta</h3>
+              <p className="text-sm text-gray-600">Calcule suas necessidades calóricas</p>
+            </a>
+            
+            <a href="/juros-compostos/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-indigo-50 hover:bg-indigo-100">
+              <div className="text-3xl mb-2">📈</div>
+              <h3 className="font-semibold text-gray-800 mb-1">Juros Compostos</h3>
+              <p className="text-sm text-gray-600">Simule investimentos e rendimentos</p>
+            </a>
+          </div>
+          
+          <div className="text-center mt-6">
+            <p className="text-sm text-gray-600 mb-2">Todas as calculadoras são gratuitas e atualizadas em 2024</p>
+            <div className="flex flex-wrap justify-center gap-2 text-xs">
+              <span className="bg-gray-100 px-2 py-1 rounded">✓ Sem cadastro</span>
+              <span className="bg-gray-100 px-2 py-1 rounded">✓ Resultados instantâneos</span>
+              <span className="bg-gray-100 px-2 py-1 rounded">✓ Mobile-friendly</span>
+            </div>
+          </div>
+        </div>
+
         <div className="bg-white rounded-lg shadow-lg p-6 mt-8">
           <article className="prose prose-lg mx-auto">
             <h2 className="text-2xl font-semibold mb-4">Bem-vindo à Calculadora Digital</h2>

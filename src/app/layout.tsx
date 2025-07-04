@@ -174,12 +174,12 @@ export default function RootLayout({
           <div className="max-w-6xl mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div>
-                <h3 className="text-lg font-semibold mb-4">Calculadoras Principais</h3>
+                <h3 className="text-lg font-semibold mb-4">🔥 Mais Populares</h3>
                 <ul className="space-y-2">
-                  <li><Link href="/calculadora-porcentagem/" className="text-gray-300 hover:text-white">Calculadora de Porcentagem</Link></li>
-                  <li><Link href="/calculadora-cientifica/" className="text-gray-300 hover:text-white">Calculadora Científica</Link></li>
-                  <li><Link href="/calculadora-imposto-renda/" className="text-gray-300 hover:text-white">Calculadora de IR</Link></li>
-                  <li><Link href="/calculadora-imc/" className="text-gray-300 hover:text-white">Calculadora IMC</Link></li>
+                  <li><Link href="/calculadora-imposto-renda/" className="text-gray-300 hover:text-white">📊 Imposto de Renda 2024</Link></li>
+                  <li><Link href="/calculadora-imc/" className="text-gray-300 hover:text-white">⚖️ Calculadora IMC</Link></li>
+                  <li><Link href="/calculadora-fgts/" className="text-gray-300 hover:text-white">🏦 FGTS 2024</Link></li>
+                  <li><Link href="/calculadora-calorias/" className="text-gray-300 hover:text-white">🍎 Calorias & Dieta</Link></li>
                 </ul>
               </div>
               <div>
@@ -192,11 +192,12 @@ export default function RootLayout({
                 </ul>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-4">Ferramentas Úteis</h3>
+                <h3 className="text-lg font-semibold mb-4">🧮 Ferramentas Básicas</h3>
                 <ul className="space-y-2">
-                  <li><Link href="/gerador-senha/" className="text-gray-300 hover:text-white">Gerador de Senha</Link></li>
-                  <li><Link href="/calendario-feriados/" className="text-gray-300 hover:text-white">Calendário de Feriados</Link></li>
-                  <li><Link href="/calculadora-fgts/" className="text-gray-300 hover:text-white">Calculadora FGTS</Link></li>
+                  <li><Link href="/" className="text-gray-300 hover:text-white">🧮 Calculadora Básica</Link></li>
+                  <li><Link href="/calculadora-cientifica/" className="text-gray-300 hover:text-white">🔬 Científica</Link></li>
+                  <li><Link href="/calculadora-porcentagem/" className="text-gray-300 hover:text-white">% Porcentagem</Link></li>
+                  <li><Link href="/gerador-senha/" className="text-gray-300 hover:text-white">🔐 Gerador de Senha</Link></li>
                 </ul>
               </div>
               <div>
