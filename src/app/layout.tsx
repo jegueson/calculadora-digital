@@ -5,6 +5,10 @@ import Link from 'next/link';
 import Script from 'next/script';
 import MobileMenu from '@/components/MobileMenu';
 import DesktopNavigation from '@/components/DesktopNavigation';
+import SocialShare from '@/components/SocialShare';
+import { getCurrentYear } from '@/utils/date';
+
+const currentYear = getCurrentYear();
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -170,15 +174,18 @@ export default function RootLayout({
           {children}
         </main>
         
+        {/* Floating Social Share Button */}
+        <SocialShare variant="floating" />
+        
         <footer className="bg-gray-800 text-white py-8 mt-12" role="contentinfo">
           <div className="max-w-6xl mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div>
                 <h3 className="text-lg font-semibold mb-4">🔥 Mais Populares</h3>
                 <ul className="space-y-2">
-                  <li><Link href="/calculadora-imposto-renda/" className="text-gray-300 hover:text-white">📊 Imposto de Renda 2024</Link></li>
+                  <li><Link href="/calculadora-imposto-renda/" className="text-gray-300 hover:text-white">📊 Imposto de Renda {currentYear}</Link></li>
                   <li><Link href="/calculadora-imc/" className="text-gray-300 hover:text-white">⚖️ Calculadora IMC</Link></li>
-                  <li><Link href="/calculadora-fgts/" className="text-gray-300 hover:text-white">🏦 FGTS 2024</Link></li>
+                  <li><Link href="/calculadora-fgts/" className="text-gray-300 hover:text-white">🏦 FGTS {currentYear}</Link></li>
                   <li><Link href="/calculadora-calorias/" className="text-gray-300 hover:text-white">🍎 Calorias & Dieta</Link></li>
                 </ul>
               </div>
@@ -205,9 +212,19 @@ export default function RootLayout({
                 <p className="text-gray-300 text-sm mb-4">
                   Calculadora Digital Online oferece ferramentas gratuitas e confiáveis para todos os seus cálculos.
                 </p>
-                <p className="text-gray-300 text-sm">
+                <p className="text-gray-300 text-sm mb-4">
                   Desenvolvida com tecnologia moderna para garantir precisão e facilidade de uso.
                 </p>
+                
+                {/* Social Share in Footer */}
+                <div className="mt-4">
+                  <h4 className="text-sm font-semibold mb-2 text-gray-300">Compartilhe:</h4>
+                  <SocialShare 
+                    variant="horizontal"
+                    className="justify-start"
+                    hashtags={['calculadora', 'ferramentas', 'brasil']}
+                  />
+                </div>
               </div>
             </div>
             <div className="border-t border-gray-700 mt-8 pt-8 text-center">

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import ShareCalculationResult from './ShareCalculationResult';
 
 interface BMIResult {
   bmi: number;
@@ -42,14 +43,14 @@ export default function BMICalculator() {
     }
 
     const bmi = weightNum / (heightNum * heightNum);
-    
+
     // Find BMI category
     const category = BMI_CATEGORIES.find(cat => bmi >= cat.min && bmi <= cat.max) || BMI_CATEGORIES[BMI_CATEGORIES.length - 1];
-    
+
     // Calculate ideal weight range (BMI 18.5-24.9)
     const idealWeightMin = 18.5 * (heightNum * heightNum);
     const idealWeightMax = 24.9 * (heightNum * heightNum);
-    
+
     // Calculate weight difference to ideal range
     let weightDifference = 0;
     if (bmi < 18.5) {
@@ -87,9 +88,9 @@ export default function BMICalculator() {
 
   const getRecommendations = () => {
     if (!result) return [];
-    
+
     const recommendations = [];
-    
+
     if (result.bmi < 18.5) {
       recommendations.push(
         '🍽️ Aumente o consumo de calorias saudáveis',
@@ -120,7 +121,7 @@ export default function BMICalculator() {
         '❤️ Monitore regularmente pressão arterial e glicemia'
       );
     }
-    
+
     return recommendations;
   };
 
@@ -227,7 +228,7 @@ export default function BMICalculator() {
             <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">
               📊 Resultado do seu IMC
             </h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <div className="bg-white p-4 rounded-lg shadow-sm text-center">
                 <div className="text-3xl font-bold text-blue-600 mb-1">
@@ -289,8 +290,8 @@ export default function BMICalculator() {
                 </thead>
                 <tbody>
                   {BMI_CATEGORIES.map((cat, index) => (
-                    <tr 
-                      key={index} 
+                    <tr
+                      key={index}
                       className={`border-b ${result.bmi >= cat.min && result.bmi <= cat.max ? 'bg-blue-50 font-semibold' : ''}`}
                     >
                       <td className="py-2">
@@ -317,12 +318,20 @@ export default function BMICalculator() {
             </ul>
           </div>
 
+          {/* Share Results */}
+          <ShareCalculationResult
+            calculatorName="Calculadora de IMC"
+            result={`${result.bmi} (${result.category})`}
+            inputs={{ weight, height, age, gender }}
+            className="mb-6"
+          />
+
           {/* Important Notice */}
           <div className="bg-yellow-50 rounded-lg p-4 border border-yellow-200">
             <h4 className="font-semibold text-yellow-800 mb-2">⚠️ Importante</h4>
             <p className="text-yellow-700 text-sm">
-              O IMC é uma ferramenta de triagem, não um diagnóstico. Fatores como massa muscular, 
-              densidade óssea e composição corporal não são considerados. Consulte sempre um 
+              O IMC é uma ferramenta de triagem, não um diagnóstico. Fatores como massa muscular,
+              densidade óssea e composição corporal não são considerados. Consulte sempre um
               profissional de saúde para avaliação completa.
             </p>
           </div>

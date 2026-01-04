@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { getCurrentYear } from '@/utils/date';
 
 interface FGTSResult {
   monthlyDeposit: number;
@@ -33,6 +34,12 @@ export default function FGTSCalculator() {
   const [currentBalance, setCurrentBalance] = useState<string>('0');
   const [result, setResult] = useState<FGTSResult | null>(null);
   const [history, setHistory] = useState<FGTSHistory[]>([]);
+  const [currentYear, setCurrentYear] = useState<number>(2024);
+
+  // Set year on client side to avoid hydration mismatch
+  useEffect(() => {
+    setCurrentYear(getCurrentYear());
+  }, []);
 
   const calculateFGTS = useCallback(() => {
     const monthlyGrossSalary = parseFloat(salary) || 0;
@@ -124,7 +131,7 @@ export default function FGTSCalculator() {
     <div className="space-y-6">
       <div className="text-center mb-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-2">
-          Calculadora de FGTS 2024
+          Calculadora de FGTS {currentYear}
         </h2>
         <p className="text-gray-600">
           Calcule seu saldo do FGTS, rendimentos e cenários de saque

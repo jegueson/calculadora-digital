@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { getCurrentYear } from '@/utils/date';
 
 interface RetirementResult {
   inssRetirement: {
@@ -32,8 +33,8 @@ interface ContributionHistory {
   totalBalance: number;
 }
 
-const INSS_CEILING_2024 = 7507.49; // INSS ceiling for 2024
-const INSS_FLOOR_2024 = 1412.00; // Minimum wage 2024
+const INSS_CEILING_2024 = 7507.49; // INSS ceiling for current year
+const INSS_FLOOR_2024 = 1412.00; // Minimum wage current year
 const INSS_RATES = [
   { min: 0, max: 1412.00, rate: 0.075 },
   { min: 1412.01, max: 2666.68, rate: 0.09 },
@@ -51,6 +52,12 @@ export default function RetirementCalculator() {
   const [expectedReturn, setExpectedReturn] = useState<string>('10');
   const [result, setResult] = useState<RetirementResult | null>(null);
   const [history, setHistory] = useState<ContributionHistory[]>([]);
+  const [currentYear, setCurrentYear] = useState<number>(2024);
+
+  // Set year on client side to avoid hydration mismatch
+  useEffect(() => {
+    setCurrentYear(getCurrentYear());
+  }, []);
 
   const calculateINSSContribution = (salary: number): number => {
     let contribution = 0;
@@ -73,7 +80,7 @@ export default function RetirementCalculator() {
   };
 
   const calculateINSSBenefit = (averageSalary: number, contributionYears: number): number => {
-    // Simplified INSS calculation based on 2024 rules
+    // Simplified INSS calculation based on current rules
     const contributionFactor = Math.min(contributionYears / 35, 1); // 35 years for full benefit
     let benefit = averageSalary * 0.6; // Base rate 60%
     
@@ -212,7 +219,7 @@ export default function RetirementCalculator() {
     <div className="space-y-6">
       <div className="text-center mb-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-2">
-          Calculadora de Aposentadoria 2024
+          Calculadora de Aposentadoria {currentYear}
         </h2>
         <p className="text-gray-600">
           Simule sua aposentadoria pelo INSS e previdência privada
@@ -532,7 +539,7 @@ export default function RetirementCalculator() {
           <div className="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
             <h4 className="font-semibold text-yellow-800 mb-2">⚠️ Informações Importantes</h4>
             <ul className="text-sm text-yellow-700 space-y-1">
-              <li>• Cálculos baseados nas regras do INSS de 2024</li>
+              <li>• Cálculos baseados nas regras do INSS de {currentYear}</li>
               <li>• Valores corrigidos pela inflação projetada</li>
               <li>• Previdência privada calculada com rentabilidade real</li>
               <li>• Consulte sempre um especialista em previdência</li>

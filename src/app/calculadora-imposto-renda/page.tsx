@@ -1,13 +1,16 @@
 import { Metadata } from 'next';
 import TaxCalculator from '@/components/TaxCalculator';
+import { getCurrentYear } from '@/utils/date';
+
+const currentYear = getCurrentYear();
 
 export const metadata: Metadata = {
-  title: "Calculadora de Imposto de Renda 2024 | Calcule seu IR Online Grátis",
-  description: "Calculadora de Imposto de Renda 2024 online e gratuita. Calcule quanto você deve pagar de IR, simule restituição e descubra se está isento. Tabela atualizada da Receita Federal.",
-  keywords: "calculadora imposto renda, calculadora IR, imposto renda 2024, calcular IR, restituição imposto renda, tabela IR 2024, isento imposto renda",
+  title: `Calculadora de Imposto de Renda ${getCurrentYear()} | Calcule seu IR Online Grátis`,
+  description: `Calculadora de Imposto de Renda ${getCurrentYear()} online e gratuita. Calcule quanto você deve pagar de IR, simule restituição e descubra se está isento. Tabela atualizada da Receita Federal.`,
+  keywords: `calculadora imposto renda, calculadora IR, imposto renda ${getCurrentYear()}, calcular IR, restituição imposto renda, tabela IR ${getCurrentYear()}, isento imposto renda`,
   openGraph: {
-    title: "Calculadora de Imposto de Renda 2024 | Calcule seu IR Online Grátis",
-    description: "Calculadora de Imposto de Renda 2024 online e gratuita. Calcule quanto você deve pagar de IR, simule restituição e descubra se está isento.",
+    title: `Calculadora de Imposto de Renda ${getCurrentYear()} | Calcule seu IR Online Grátis`,
+    description: `Calculadora de Imposto de Renda ${getCurrentYear()} online e gratuita. Calcule quanto você deve pagar de IR, simule restituição e descubra se está isento.`,
     url: 'https://calculadora-digital.com.br/calculadora-imposto-renda/',
     type: 'website',
   },
@@ -19,8 +22,8 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Calculadora de Imposto de Renda 2024",
-  "description": "Calculadora gratuita para calcular o Imposto de Renda 2024 com tabela atualizada da Receita Federal",
+  "name": `Calculadora de Imposto de Renda ${getCurrentYear()}`,
+  "description": `Calculadora gratuita para calcular o Imposto de Renda ${getCurrentYear()} com tabela atualizada da Receita Federal`,
   "url": "https://calculadora-digital.com.br/calculadora-imposto-renda/",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web Browser",
@@ -30,7 +33,7 @@ const structuredData = {
     "priceCurrency": "BRL"
   },
   "featureList": [
-    "Cálculo do Imposto de Renda 2024",
+    `Cálculo do Imposto de Renda ${getCurrentYear()}`,
     "Simulação de Restituição",
     "Verificação de Isenção",
     "Tabela progressiva atualizada",
@@ -53,10 +56,10 @@ export default function TaxCalculatorPage() {
           {/* Header */}
           <header className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Calculadora de Imposto de Renda 2024
+              Calculadora de Imposto de Renda {currentYear}
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Calcule seu Imposto de Renda 2024 online e gratuito. Descubra quanto você deve pagar, 
+              Calcule seu Imposto de Renda {currentYear} online e gratuito. Descubra quanto você deve pagar, 
               simule sua restituição e verifique se está isento com nossa calculadora atualizada.
             </p>
           </header>
@@ -73,7 +76,7 @@ export default function TaxCalculatorPage() {
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
                 <h3 className="text-xl font-semibold mb-4 text-gray-800">
-                  📊 Tabela IR 2024
+                  📊 Tabela IR {currentYear}
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center py-2 border-b">
@@ -107,7 +110,7 @@ export default function TaxCalculatorPage() {
                   <li>• Utilize sempre a renda líquida (após descontos)</li>
                   <li>• Considere deduções legais como dependentes</li>
                   <li>• Mantenha comprovantes de gastos dedutíveis</li>
-                  <li>• Entregue a declaração até 31/05/2024</li>
+                  <li>• Entregue a declaração até 31/05/{currentYear}</li>
                 </ul>
               </div>
             </div>
@@ -117,7 +120,7 @@ export default function TaxCalculatorPage() {
           <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
             <article className="prose prose-lg max-w-none">
               <h2 className="text-2xl font-bold mb-6 text-gray-800">
-                Como Calcular o Imposto de Renda 2024
+                Como Calcular o Imposto de Renda {currentYear}
               </h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -149,7 +152,7 @@ export default function TaxCalculatorPage() {
               </div>
 
               <h3 className="text-xl font-semibold mb-4 text-gray-800">
-                💰 Principais Deduções do IR 2024
+                💰 Principais Deduções do IR {currentYear}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gray-50 p-4 rounded-lg">

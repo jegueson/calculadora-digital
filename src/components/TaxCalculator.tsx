@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { getCurrentYear } from '@/utils/date';
 
 interface TaxBracket {
   min: number;
@@ -18,7 +19,7 @@ interface TaxResult {
   bracket: string;
 }
 
-const TAX_BRACKETS_2024: TaxBracket[] = [
+const TAX_BRACKETS: TaxBracket[] = [
   { min: 0, max: 2259.20, rate: 0, deduction: 0 },
   { min: 2259.21, max: 2826.65, rate: 0.075, deduction: 169.44 },
   { min: 2826.66, max: 3751.05, rate: 0.15, deduction: 381.44 },
@@ -26,13 +27,19 @@ const TAX_BRACKETS_2024: TaxBracket[] = [
   { min: 4664.69, max: null, rate: 0.275, deduction: 896.00 },
 ];
 
-const DEPENDENT_DEDUCTION = 189.59; // Monthly deduction per dependent in 2024
+const DEPENDENT_DEDUCTION = 189.59; // Monthly deduction per dependent
 
 export default function TaxCalculator() {
   const [monthlyIncome, setMonthlyIncome] = useState<string>('');
   const [dependents, setDependents] = useState<string>('0');
   const [otherDeductions, setOtherDeductions] = useState<string>('0');
   const [result, setResult] = useState<TaxResult | null>(null);
+  const [currentYear, setCurrentYear] = useState<number>(2024);
+
+  // Set year on client side to avoid hydration mismatch
+  useEffect(() => {
+    setCurrentYear(getCurrentYear());
+  }, []);
 
   const calculateTax = useCallback(() => {
     const grossIncome = parseFloat(monthlyIncome) || 0;
@@ -52,7 +59,7 @@ export default function TaxCalculator() {
     const taxableIncome = Math.max(0, grossIncome - totalDeductions);
 
     // Find applicable tax bracket
-    const bracket = TAX_BRACKETS_2024.find(b => 
+    const bracket = TAX_BRACKETS.find(b => 
       taxableIncome >= b.min && (b.max === null || taxableIncome <= b.max)
     );
 
@@ -111,7 +118,7 @@ export default function TaxCalculator() {
     <div className="space-y-6">
       <div className="text-center mb-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-2">
-          Calculadora de Imposto de Renda 2024
+          Calculadora de Imposto de Renda {currentYear}
         </h2>
         <p className="text-gray-600">
           Calcule seu IR mensal com base na tabela progressiva da Receita Federal

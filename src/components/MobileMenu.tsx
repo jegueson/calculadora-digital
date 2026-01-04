@@ -2,14 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { getCurrentYear } from '@/utils/date';
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [currentYear, setCurrentYear] = useState<number>(2024);
   const router = useRouter();
 
   useEffect(() => {
     setMounted(true);
+    setCurrentYear(getCurrentYear());
   }, []);
 
   const toggleMenu = () => {
@@ -56,7 +59,7 @@ export default function MobileMenu() {
                 onClick={() => handleNavigation('/calculadora-imposto-renda')}
                 className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-blue-50"
               >
-                📊 Imposto de Renda 2024
+                📊 Imposto de Renda {currentYear}
               </div>
               <div 
                 onClick={() => handleNavigation('/calculadora-imc')}
@@ -68,7 +71,7 @@ export default function MobileMenu() {
                 onClick={() => handleNavigation('/calculadora-fgts')}
                 className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-blue-50"
               >
-                🏦 FGTS 2024
+                🏦 FGTS {currentYear}
               </div>
               <div 
                 onClick={() => handleNavigation('/calculadora-aposentadoria')}

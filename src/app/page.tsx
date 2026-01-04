@@ -1,5 +1,9 @@
 import React from 'react';
 import Calculator from '@/components/Calculator';
+import SocialShare from '@/components/SocialShare';
+import { getCurrentYear } from '@/utils/date';
+
+const currentYear = getCurrentYear();
 
 export default function Home() {
   return (
@@ -24,7 +28,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <a href="/calculadora-imposto-renda/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-blue-50 hover:bg-blue-100">
               <div className="text-3xl mb-2">📊</div>
-              <h3 className="font-semibold text-gray-800 mb-1">Imposto de Renda 2024</h3>
+              <h3 className="font-semibold text-gray-800 mb-1">Imposto de Renda {currentYear}</h3>
               <p className="text-sm text-gray-600">Calcule seu IR com as regras atualizadas</p>
             </a>
             
@@ -36,7 +40,7 @@ export default function Home() {
             
             <a href="/calculadora-fgts/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-yellow-50 hover:bg-yellow-100">
               <div className="text-3xl mb-2">🏦</div>
-              <h3 className="font-semibold text-gray-800 mb-1">FGTS 2024</h3>
+              <h3 className="font-semibold text-gray-800 mb-1">FGTS {currentYear}</h3>
               <p className="text-sm text-gray-600">Simule saldo e saques do FGTS</p>
             </a>
             
@@ -60,11 +64,24 @@ export default function Home() {
           </div>
           
           <div className="text-center mt-6">
-            <p className="text-sm text-gray-600 mb-2">Todas as calculadoras são gratuitas e atualizadas em 2024</p>
-            <div className="flex flex-wrap justify-center gap-2 text-xs">
+            <p className="text-sm text-gray-600 mb-2">Todas as calculadoras são gratuitas e atualizadas em {currentYear}</p>
+            <div className="flex flex-wrap justify-center gap-2 text-xs mb-4">
               <span className="bg-gray-100 px-2 py-1 rounded">✓ Sem cadastro</span>
               <span className="bg-gray-100 px-2 py-1 rounded">✓ Resultados instantâneos</span>
               <span className="bg-gray-100 px-2 py-1 rounded">✓ Mobile-friendly</span>
+            </div>
+            
+            {/* Social Share Section */}
+            <div className="border-t pt-4">
+              <p className="text-sm text-gray-600 mb-3">
+                📢 Compartilhe com seus amigos e ajude mais pessoas!
+              </p>
+              <SocialShare 
+                showLabels={true}
+                variant="horizontal"
+                className="justify-center"
+                hashtags={['calculadora', 'ferramentas', 'gratuito', 'brasil']}
+              />
             </div>
           </div>
         </div>

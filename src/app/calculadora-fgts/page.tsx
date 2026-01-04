@@ -1,13 +1,16 @@
 import { Metadata } from 'next';
 import FGTSCalculator from '@/components/FGTSCalculator';
+import { getCurrentYear } from '@/utils/date';
+
+const currentYear = getCurrentYear();
 
 export const metadata: Metadata = {
-  title: "Calculadora de FGTS 2024 Online Grátis | Calcule seu Saldo e Rendimentos",
-  description: "Calculadora de FGTS atualizada 2024. Calcule seu saldo, rendimentos, projeções e cenários de saque. Simule demissão, aposentadoria e financiamento imobiliário. Grátis e preciso.",
-  keywords: "calculadora fgts, fgts 2024, calcular fgts, saldo fgts, rendimento fgts, saque fgts, fgts demissão, fgts aposentadoria, fgts casa própria, simulador fgts",
+  title: `Calculadora de FGTS ${getCurrentYear()} Online Grátis | Calcule seu Saldo e Rendimentos`,
+  description: `Calculadora de FGTS atualizada ${getCurrentYear()}. Calcule seu saldo, rendimentos, projeções e cenários de saque. Simule demissão, aposentadoria e financiamento imobiliário. Grátis e preciso.`,
+  keywords: `calculadora fgts, fgts ${getCurrentYear()}, calcular fgts, saldo fgts, rendimento fgts, saque fgts, fgts demissão, fgts aposentadoria, fgts casa própria, simulador fgts`,
   openGraph: {
-    title: "Calculadora de FGTS 2024 Online Grátis | Calcule seu Saldo e Rendimentos",
-    description: "Calculadora de FGTS atualizada 2024. Calcule seu saldo, rendimentos, projeções e cenários de saque. Simule demissão, aposentadoria e financiamento imobiliário.",
+    title: `Calculadora de FGTS ${getCurrentYear()} Online Grátis | Calcule seu Saldo e Rendimentos`,
+    description: `Calculadora de FGTS atualizada ${getCurrentYear()}. Calcule seu saldo, rendimentos, projeções e cenários de saque. Simule demissão, aposentadoria e financiamento imobiliário.`,
     url: 'https://calculadora-digital.com.br/calculadora-fgts/',
     type: 'website',
   },
@@ -19,7 +22,7 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Calculadora de FGTS 2024",
+  "name": `Calculadora de FGTS ${getCurrentYear()}`,
   "description": "Calculadora gratuita para calcular saldo, rendimentos e cenários de saque do FGTS",
   "url": "https://calculadora-digital.com.br/calculadora-fgts/",
   "applicationCategory": "FinanceApplication",
@@ -54,7 +57,7 @@ export default function FGTSCalculatorPage() {
           {/* Header */}
           <header className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Calculadora de FGTS 2024 - Grátis e Atualizada
+              Calculadora de FGTS {currentYear} - Grátis e Atualizada
             </h1>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto">
               Calcule seu saldo do FGTS, rendimentos e simule cenários de saque. 

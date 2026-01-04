@@ -1,9 +1,12 @@
 import { Metadata } from 'next';
 import BMICalculator from '@/components/BMICalculator';
+import { getCurrentYear } from '@/utils/date';
+
+const currentYear = getCurrentYear();
 
 export const metadata: Metadata = {
   title: "Calculadora de IMC Online Grátis | Calcule seu Índice de Massa Corporal",
-  description: "Calculadora de IMC gratuita e precisa. Calcule seu Índice de Massa Corporal, descubra se está no peso ideal e receba dicas personalizadas de saúde. Tabela IMC completa 2024.",
+  description: `Calculadora de IMC gratuita e precisa. Calcule seu Índice de Massa Corporal, descubra se está no peso ideal e receba dicas personalizadas de saúde. Tabela IMC completa ${getCurrentYear()}.`,
   keywords: "calculadora imc, calcular imc, imc ideal, indice massa corporal, peso ideal, calculadora peso, imc tabela, como calcular imc, imc online",
   openGraph: {
     title: "Calculadora de IMC Online Grátis | Calcule seu Índice de Massa Corporal",
@@ -54,7 +57,7 @@ export default function BMICalculatorPage() {
           {/* Header */}
           <header className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Calculadora de IMC Online Grátis 2024
+              Calculadora de IMC Online Grátis {currentYear}
             </h1>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto">
               Calcule seu Índice de Massa Corporal (IMC) gratuitamente e descubra se você está no peso ideal. 

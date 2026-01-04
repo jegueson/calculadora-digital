@@ -1,13 +1,16 @@
 import { Metadata } from 'next';
 import RetirementCalculator from '@/components/RetirementCalculator';
+import { getCurrentYear } from '@/utils/date';
+
+const currentYear = getCurrentYear();
 
 export const metadata: Metadata = {
-  title: "Calculadora de Aposentadoria 2024 Online Grátis | Simule INSS e Previdência Privada",
-  description: "Calculadora de aposentadoria atualizada 2024. Simule sua aposentadoria pelo INSS e previdência privada. Calcule benefícios, tempo de contribuição e planejamento financeiro. Grátis e preciso.",
-  keywords: "calculadora aposentadoria, aposentadoria 2024, aposentadoria inss, previdência privada, simulador aposentadoria, beneficio inss, tempo contribuição, planejamento aposentadoria",
+  title: `Calculadora de Aposentadoria ${getCurrentYear()} Online Grátis | Simule INSS e Previdência Privada`,
+  description: `Calculadora de aposentadoria atualizada ${getCurrentYear()}. Simule sua aposentadoria pelo INSS e previdência privada. Calcule benefícios, tempo de contribuição e planejamento financeiro. Grátis e preciso.`,
+  keywords: `calculadora aposentadoria, aposentadoria ${getCurrentYear()}, aposentadoria inss, previdência privada, simulador aposentadoria, beneficio inss, tempo contribuição, planejamento aposentadoria`,
   openGraph: {
-    title: "Calculadora de Aposentadoria 2024 Online Grátis | Simule INSS e Previdência Privada",
-    description: "Calculadora de aposentadoria atualizada 2024. Simule sua aposentadoria pelo INSS e previdência privada. Calcule benefícios, tempo de contribuição e planejamento financeiro.",
+    title: `Calculadora de Aposentadoria ${getCurrentYear()} Online Grátis | Simule INSS e Previdência Privada`,
+    description: `Calculadora de aposentadoria atualizada ${getCurrentYear()}. Simule sua aposentadoria pelo INSS e previdência privada. Calcule benefícios, tempo de contribuição e planejamento financeiro.`,
     url: 'https://calculadora-digital.com.br/calculadora-aposentadoria/',
     type: 'website',
   },
@@ -23,7 +26,7 @@ export default function RetirementCalculatorPage() {
         {/* Header */}
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Calculadora de Aposentadoria 2024 - Grátis e Atualizada
+            Calculadora de Aposentadoria {currentYear} - Grátis e Atualizada
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
             Simule sua aposentadoria pelo INSS e previdência privada. Descubra quanto você receberá, 
@@ -43,7 +46,7 @@ export default function RetirementCalculatorPage() {
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
               <h3 className="text-xl font-semibold mb-4 text-gray-800">
-                🏛️ Regras do INSS 2024
+                🏛️ Regras do INSS {currentYear}
               </h3>
               <div className="space-y-3">
                 <div className="flex items-center py-2 border-b">

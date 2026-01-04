@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { getCurrentYear } from '@/utils/date';
 
 interface CalorieResult {
   bmr: number;
@@ -33,6 +34,12 @@ export default function CalorieCalculator() {
   const [goalType, setGoalType] = useState<string>('maintenance');
   const [targetWeight, setTargetWeight] = useState<string>('');
   const [result, setResult] = useState<CalorieResult | null>(null);
+  const [currentYear, setCurrentYear] = useState<number>(2024);
+
+  // Set year on client side to avoid hydration mismatch
+  useEffect(() => {
+    setCurrentYear(getCurrentYear());
+  }, []);
 
   const activityLevels = [
     { value: '1.2', label: 'Sedentário', description: 'Pouco ou nenhum exercício' },
@@ -174,7 +181,7 @@ export default function CalorieCalculator() {
     <div className="space-y-6">
       <div className="text-center mb-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-2">
-          Calculadora de Calorias 2024
+          Calculadora de Calorias {currentYear}
         </h2>
         <p className="text-gray-600">
           Calcule suas calorias diárias e planeje sua alimentação para alcançar seus objetivos
