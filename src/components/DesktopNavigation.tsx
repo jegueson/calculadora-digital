@@ -14,7 +14,7 @@ export default function DesktopNavigation() {
           </svg>
         </div>
         <div 
-          className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+          className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
           style={{ zIndex: 9999 }}
         >
           <div className="py-1">
@@ -43,6 +43,44 @@ export default function DesktopNavigation() {
         </div>
       </div>
 
+      {/* Trabalho & Brasil Dropdown */}
+      <div className="relative group">
+        <div className="inline-flex items-center px-1 pt-1 text-gray-600 hover:text-gray-800 cursor-pointer">
+          Trabalho &amp; Brasil
+          <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+        <div 
+          className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+          style={{ zIndex: 9999 }}
+        >
+          <div className="py-1 max-h-[70vh] overflow-y-auto">
+            <Link href="/calculadora-salario-liquido" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              Salário líquido (CLT)
+            </Link>
+            <Link href="/calculadora-rescisao-trabalhista" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              Rescisão trabalhista
+            </Link>
+            <Link href="/calculadora-13-ferias" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              13º e férias
+            </Link>
+            <Link href="/calculadora-hora-extra" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              Horas extras e noturno
+            </Link>
+            <Link href="/calculadora-vale-transporte" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              Vale-transporte
+            </Link>
+            <Link href="/calculadora-das-mei" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              DAS MEI
+            </Link>
+            <Link href="/calculadora-bpc-loas" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              BPC / renda per capita
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Finanças Dropdown */}
       <div className="relative group">
         <div className="inline-flex items-center px-1 pt-1 text-gray-600 hover:text-gray-800 cursor-pointer">
@@ -52,12 +90,24 @@ export default function DesktopNavigation() {
           </svg>
         </div>
         <div 
-          className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+          className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
           style={{ zIndex: 9999 }}
         >
-          <div className="py-1">
+          <div className="py-1 max-h-[70vh] overflow-y-auto">
             <Link href="/calculo-financiamento-imobiliario" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-              Cálculo de Financiamento Imobiliário
+              Financiamento imobiliário
+            </Link>
+            <Link href="/calculadora-financiamento-veiculo" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              Financiamento de veículo
+            </Link>
+            <Link href="/calculadora-consorcio" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              Consórcio
+            </Link>
+            <Link href="/calculadora-cdb-cdi" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              CDB / CDI
+            </Link>
+            <Link href="/calculadora-cartao-credito" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              Cartão de crédito
             </Link>
             <Link href="/juros-compostos" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Juros Compostos
@@ -66,7 +116,7 @@ export default function DesktopNavigation() {
               Cálculo de Payback
             </Link>
             <Link href="/calculadora-aposentadoria" className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-              Calculadora de Aposentadoria
+              Aposentadoria
             </Link>
           </div>
         </div>

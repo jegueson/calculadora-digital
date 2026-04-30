@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code', // Replace with actual verification code
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
   },
 };
 
@@ -179,7 +179,7 @@ export default function RootLayout({
         
         <footer className="bg-gray-800 text-white py-8 mt-12" role="contentinfo">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
               <div>
                 <h3 className="text-lg font-semibold mb-4">🔥 Mais Populares</h3>
                 <ul className="space-y-2">
@@ -194,8 +194,24 @@ export default function RootLayout({
                 <ul className="space-y-2">
                   <li><Link href="/juros-compostos/" className="text-gray-300 hover:text-white">Juros Compostos</Link></li>
                   <li><Link href="/calculo-financiamento-imobiliario/" className="text-gray-300 hover:text-white">Financiamento Imobiliário</Link></li>
+                  <li><Link href="/calculadora-financiamento-veiculo/" className="text-gray-300 hover:text-white">Financiamento Veículo</Link></li>
+                  <li><Link href="/calculadora-consorcio/" className="text-gray-300 hover:text-white">Consórcio</Link></li>
+                  <li><Link href="/calculadora-cdb-cdi/" className="text-gray-300 hover:text-white">CDB / CDI</Link></li>
+                  <li><Link href="/calculadora-cartao-credito/" className="text-gray-300 hover:text-white">Cartão de Crédito</Link></li>
                   <li><Link href="/calculo-payback/" className="text-gray-300 hover:text-white">Payback</Link></li>
                   <li><Link href="/calculadora-aposentadoria/" className="text-gray-300 hover:text-white">Aposentadoria</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Trabalho &amp; Brasil</h3>
+                <ul className="space-y-2">
+                  <li><Link href="/calculadora-salario-liquido/" className="text-gray-300 hover:text-white">Salário Líquido</Link></li>
+                  <li><Link href="/calculadora-rescisao-trabalhista/" className="text-gray-300 hover:text-white">Rescisão</Link></li>
+                  <li><Link href="/calculadora-13-ferias/" className="text-gray-300 hover:text-white">13º e Férias</Link></li>
+                  <li><Link href="/calculadora-hora-extra/" className="text-gray-300 hover:text-white">Horas Extras</Link></li>
+                  <li><Link href="/calculadora-vale-transporte/" className="text-gray-300 hover:text-white">Vale-Transporte</Link></li>
+                  <li><Link href="/calculadora-das-mei/" className="text-gray-300 hover:text-white">DAS MEI</Link></li>
+                  <li><Link href="/calculadora-bpc-loas/" className="text-gray-300 hover:text-white">BPC / Renda</Link></li>
                 </ul>
               </div>
               <div>

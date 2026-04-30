@@ -10,7 +10,6 @@ Crawl-delay: 1
 # Disallow admin and private areas (if any)
 Disallow: /admin/
 Disallow: /private/
-Disallow: /_next/
 Disallow: /build/
 
 # Allow important calculator pages

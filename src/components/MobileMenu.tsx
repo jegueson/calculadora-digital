@@ -110,6 +110,53 @@ export default function MobileMenu() {
               </div>
             </div>
 
+            {/* Trabalho & Brasil */}
+            <div className="space-y-1">
+              <h3 className="px-3 py-2 text-sm font-semibold text-orange-600 border-b border-gray-200">🇧🇷 Trabalho &amp; Brasil</h3>
+              <div 
+                onClick={() => handleNavigation('/calculadora-salario-liquido')}
+                className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-orange-50"
+              >
+                💼 Salário líquido
+              </div>
+              <div 
+                onClick={() => handleNavigation('/calculadora-rescisao-trabalhista')}
+                className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-orange-50"
+              >
+                📄 Rescisão trabalhista
+              </div>
+              <div 
+                onClick={() => handleNavigation('/calculadora-13-ferias')}
+                className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-orange-50"
+              >
+                📆 13º e férias
+              </div>
+              <div 
+                onClick={() => handleNavigation('/calculadora-hora-extra')}
+                className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-orange-50"
+              >
+                ⏱️ Horas extras
+              </div>
+              <div 
+                onClick={() => handleNavigation('/calculadora-vale-transporte')}
+                className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-orange-50"
+              >
+                🚌 Vale-transporte
+              </div>
+              <div 
+                onClick={() => handleNavigation('/calculadora-das-mei')}
+                className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-orange-50"
+              >
+                🧾 DAS MEI
+              </div>
+              <div 
+                onClick={() => handleNavigation('/calculadora-bpc-loas')}
+                className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-orange-50"
+              >
+                🤝 BPC / renda per capita
+              </div>
+            </div>
+
             {/* Financial Calculators */}
             <div className="space-y-1">
               <h3 className="px-3 py-2 text-sm font-semibold text-green-600 border-b border-gray-200">💰 Finanças</h3>
@@ -123,7 +170,31 @@ export default function MobileMenu() {
                 onClick={() => handleNavigation('/calculo-financiamento-imobiliario')}
                 className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-green-50"
               >
-                🏠 Financiamento
+                🏠 Financiamento imóvel
+              </div>
+              <div 
+                onClick={() => handleNavigation('/calculadora-financiamento-veiculo')}
+                className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-green-50"
+              >
+                🚗 Financiamento veículo
+              </div>
+              <div 
+                onClick={() => handleNavigation('/calculadora-consorcio')}
+                className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-green-50"
+              >
+                🤝 Consórcio
+              </div>
+              <div 
+                onClick={() => handleNavigation('/calculadora-cdb-cdi')}
+                className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-green-50"
+              >
+                📊 CDB / CDI
+              </div>
+              <div 
+                onClick={() => handleNavigation('/calculadora-cartao-credito')}
+                className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-green-50"
+              >
+                💳 Cartão de crédito
               </div>
               <div 
                 onClick={() => handleNavigation('/calculo-payback')}
