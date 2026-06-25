@@ -24,6 +24,38 @@
 - ✅ **BMI Calculator** - Comprehensive health tool with personalized recommendations
 - ✅ **FGTS Calculator** - Brazilian labor fund calculator with withdrawal scenarios
 
+## ✅ SEO Improvements Batch (Search Console) — COMPLETED
+
+### Week 1 — Technical duplication fixes
+- ✅ Unique `metadata` + self-canonical URLs on: científica, porcentagem, payback, gerador-senha, juros-compostos, calorias, financiamento imobiliário
+- ✅ Fixed missing H1 on `/calculadora-calorias/`
+- ✅ Shortened FGTS title (under 60 chars)
+
+### Week 2 — Homepage CTR
+- ✅ Homepage title/meta updated to target "calculadora online grátis"
+
+### Week 3 — High-impression page improvements
+- ✅ `/calculadora-cientifica/` — FAQ section + optimized title/meta
+- ✅ `/calculadora-porcentagem/` — worked examples + optimized title/meta
+- ✅ `/calculadora-fgts/` — target FAQ questions + shorter title
+- ✅ `/calculadora-salario-liquido/` — INSS/IRRF tables + salary examples
+- ✅ `/juros-compostos/` — metadata + FAQ + cross-links
+
+### Week 4 — New page
+- ✅ `/calculadora-de-horas/` — functional HoursCalculator + SEO content
+
+### Internal linking
+- ✅ Homepage "Calculadoras Mais Usadas" grid with exact-match anchors
+- ✅ Cross-links: FGTS↔Rescisão, Salário↔Hora Extra↔13º, Juros↔CDB↔Financiamento, IMC↔Calorias
+
+### Backlog — future calculator pages (not built)
+- [ ] `/calculadora-de-datas/` — calculadora de datas
+- [ ] `/calculadora-financeira/` — calculadora financeira
+- [ ] `/calculadora-juros-compostos-diarios/` — juros compostos diários
+- [ ] `/calculadora-folha-pagamento/` — cálculo folha de pagamento
+- [ ] `/calculadora-contagem-regressiva/` — contagem regressiva
+- [ ] `/calculadora-binario/` — calculadora binário
+
 ## Next Priority Tasks (Phase 2)
 
 ### 1. Code Quality & Security Review

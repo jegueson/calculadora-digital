@@ -1,5 +1,22 @@
+import { Metadata } from 'next';
 import React from 'react';
 import PasswordGenerator from '@/components/PasswordGenerator';
+
+export const metadata: Metadata = {
+  title: 'Gerador de Senhas Seguras Online | Grátis',
+  description:
+    'Gere senhas fortes e seguras online. Personalize comprimento e caracteres. Ferramenta gratuita, sem cadastro.',
+  alternates: {
+    canonical: 'https://calculadora-digital.com.br/gerador-senha/',
+  },
+  openGraph: {
+    title: 'Gerador de Senhas Seguras Online | Grátis',
+    description:
+      'Gere senhas fortes e seguras online. Personalize comprimento e caracteres.',
+    url: 'https://calculadora-digital.com.br/gerador-senha/',
+    type: 'website',
+  },
+};
 
 export default function PasswordGeneratorPage() {
   return (

@@ -1,5 +1,22 @@
+import { Metadata } from 'next';
 import React from 'react';
 import ScientificCalculator from '@/components/ScientificCalculator';
+
+export const metadata: Metadata = {
+  title: 'Calculadora Científica Online Grátis | Com Funções Avançadas',
+  description:
+    'Use a calculadora científica online grátis para seno, cosseno, tangente, raiz, potência, logaritmo e operações avançadas.',
+  alternates: {
+    canonical: 'https://calculadora-digital.com.br/calculadora-cientifica/',
+  },
+  openGraph: {
+    title: 'Calculadora Científica Online Grátis | Com Funções Avançadas',
+    description:
+      'Use a calculadora científica online grátis para seno, cosseno, tangente, raiz, potência, logaritmo e operações avançadas.',
+    url: 'https://calculadora-digital.com.br/calculadora-cientifica/',
+    type: 'website',
+  },
+};
 
 export default function ScientificCalculatorPage() {
   return (
@@ -103,6 +120,48 @@ export default function ScientificCalculatorPage() {
               <li><strong>MC:</strong> Limpa a memória.</li>
               <li><strong>MS:</strong> Armazena o valor atual na memória.</li>
             </ul>
+
+            <h2 className="text-2xl font-semibold mt-8 mb-4">Perguntas Frequentes</h2>
+            <div className="space-y-4">
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  Como usar uma calculadora científica online?
+                </h3>
+                <p className="text-gray-600">
+                  Digite os números, escolha a função desejada (seno, logaritmo, raiz etc.) e pressione
+                  o botão de igual. Use o modo graus ou radianos para funções trigonométricas e parênteses
+                  para definir a ordem das operações.
+                </p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  O que é uma calculadora científica?
+                </h3>
+                <p className="text-gray-600">
+                  É uma calculadora com funções avançadas além das operações básicas: trigonometria,
+                  logaritmos, exponenciais, fatorial e notação científica. É usada em escola, universidade,
+                  engenharia e finanças.
+                </p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  Como calcular seno, cosseno e tangente?
+                </h3>
+                <p className="text-gray-600">
+                  Informe o ângulo, verifique se o modo está em graus (DEG) ou radianos (RAD) e pressione
+                  sin, cos ou tan. Para o inverso, use arcsin, arccos ou arctan.
+                </p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  Como fazer potência e raiz quadrada?
+                </h3>
+                <p className="text-gray-600">
+                  Para raiz quadrada, digite o número e pressione √. Para potência, digite a base, use x^y
+                  e informe o expoente. Exemplo: 2^8 = 256.
+                </p>
+              </div>
+            </div>
           </article>
         </div>
       </div>

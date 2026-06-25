@@ -17,9 +17,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Calculadora Digital Online | Ferramentas Gratuitas de Cálculo",
-  description: "Calculadora digital online gratuita com mais de 15 ferramentas: financeiras, científicas, IMC, porcentagem, juros compostos, financiamento imobiliário e muito mais. Sem instalação, 100% gratuito.",
-  keywords: "calculadora online, calculadora digital, calculadora científica, calculadora porcentagem, calculadora financiamento, calculadora juros compostos, calculadora IMC, calculadora imposto renda",
+  title: "Calculadora Online Grátis | Simples, Rápida e Fácil",
+  description: "Use a calculadora online grátis para fazer contas rápidas no celular ou computador. Simples, prática, sem cadastro e com várias ferramentas de cálculo.",
+  keywords: "calculadora online, calculadora online grátis, calculadora simples, calculadora digital, calculadora científica, calculadora porcentagem, calculadora financiamento, calculadora juros compostos, calculadora IMC, calculadora imposto renda",
   authors: [{ name: "Calculadora Digital" }],
   creator: "Calculadora Digital",
   publisher: "Calculadora Digital",
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     canonical: 'https://calculadora-digital.com.br',
   },
   openGraph: {
-    title: "Calculadora Digital Online | Ferramentas Gratuitas de Cálculo",
-    description: "Calculadora digital online gratuita com mais de 15 ferramentas: financeiras, científicas, IMC, porcentagem, juros compostos, financiamento imobiliário e muito mais.",
+    title: "Calculadora Online Grátis | Simples, Rápida e Fácil",
+    description: "Use a calculadora online grátis para fazer contas rápidas no celular ou computador. Simples, prática, sem cadastro e com várias ferramentas de cálculo.",
     url: 'https://calculadora-digital.com.br',
     siteName: 'Calculadora Digital Online',
     locale: 'pt_BR',
@@ -50,8 +50,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Calculadora Digital Online | Ferramentas Gratuitas de Cálculo",
-    description: "Calculadora digital online gratuita com mais de 15 ferramentas: financeiras, científicas, IMC, porcentagem, juros compostos e muito mais.",
+    title: "Calculadora Online Grátis | Simples, Rápida e Fácil",
+    description: "Use a calculadora online grátis para fazer contas rápidas no celular ou computador. Simples, prática, sem cadastro e com várias ferramentas de cálculo.",
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -220,6 +220,7 @@ export default function RootLayout({
                   <li><Link href="/" className="text-gray-300 hover:text-white">🧮 Calculadora Básica</Link></li>
                   <li><Link href="/calculadora-cientifica/" className="text-gray-300 hover:text-white">🔬 Científica</Link></li>
                   <li><Link href="/calculadora-porcentagem/" className="text-gray-300 hover:text-white">% Porcentagem</Link></li>
+                  <li><Link href="/calculadora-de-horas/" className="text-gray-300 hover:text-white">⏱️ Horas</Link></li>
                   <li><Link href="/gerador-senha/" className="text-gray-300 hover:text-white">🔐 Gerador de Senha</Link></li>
                 </ul>
               </div>

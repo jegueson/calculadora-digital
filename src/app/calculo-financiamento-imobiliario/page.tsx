@@ -1,5 +1,22 @@
+import { Metadata } from 'next';
 import React from 'react';
 import PropertyFinanceCalculator from '@/components/PropertyFinanceCalculator';
+
+export const metadata: Metadata = {
+  title: 'Calculadora de Financiamento Imobiliário | Simule Prestações',
+  description:
+    'Simule financiamento imobiliário online. Calcule prestações, juros, seguro e planeje a compra da sua casa.',
+  alternates: {
+    canonical: 'https://calculadora-digital.com.br/calculo-financiamento-imobiliario/',
+  },
+  openGraph: {
+    title: 'Calculadora de Financiamento Imobiliário | Simule Prestações',
+    description:
+      'Simule financiamento imobiliário online. Calcule prestações, juros e planeje a compra da sua casa.',
+    url: 'https://calculadora-digital.com.br/calculo-financiamento-imobiliario/',
+    type: 'website',
+  },
+};
 
 export default function PropertyFinanceCalculatorPage() {
   return (

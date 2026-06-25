@@ -1,5 +1,22 @@
+import { Metadata } from 'next';
 import React from 'react';
 import PercentageCalculator from '@/components/PercentageCalculator';
+
+export const metadata: Metadata = {
+  title: 'Calculadora de Porcentagem Online | Calcule % Grátis',
+  description:
+    'Calcule porcentagem online grátis: desconto, aumento, quanto é X% de um valor e porcentagem entre dois números. Rápida e fácil.',
+  alternates: {
+    canonical: 'https://calculadora-digital.com.br/calculadora-porcentagem/',
+  },
+  openGraph: {
+    title: 'Calculadora de Porcentagem Online | Calcule % Grátis',
+    description:
+      'Calcule porcentagem online grátis: desconto, aumento, quanto é X% de um valor e porcentagem entre dois números.',
+    url: 'https://calculadora-digital.com.br/calculadora-porcentagem/',
+    type: 'website',
+  },
+};
 
 export default function PercentageCalculatorPage() {
   return (
@@ -69,6 +86,34 @@ export default function PercentageCalculatorPage() {
               <li><strong>Margem de Lucro:</strong> Calcule qual a porcentagem de lucro sobre o custo de um produto.</li>
               <li><strong>Impostos:</strong> Calcule o valor de impostos baseados em porcentagens.</li>
             </ul>
+
+            <h2 className="text-2xl font-semibold mt-8 mb-4">Exemplos Resolvidos</h2>
+            <div className="space-y-4 mb-6">
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">Quanto é 20% de 150?</h3>
+                <p className="text-gray-700">150 × 0,20 = <strong>R$ 30,00</strong></p>
+              </div>
+              <div className="bg-green-50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">Como calcular aumento percentual?</h3>
+                <p className="text-gray-700">
+                  Salário de R$ 3.000 com aumento de 10%: 3.000 × 1,10 = <strong>R$ 3.300,00</strong>
+                </p>
+              </div>
+              <div className="bg-yellow-50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">Como calcular desconto?</h3>
+                <p className="text-gray-700">
+                  Produto de R$ 200 com 15% de desconto: 200 − (200 × 0,15) = <strong>R$ 170,00</strong>
+                </p>
+              </div>
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  Como descobrir a porcentagem entre dois valores?
+                </h3>
+                <p className="text-gray-700">
+                  45 é qual % de 180? (45 ÷ 180) × 100 = <strong>25%</strong>
+                </p>
+              </div>
+            </div>
 
             <h3 className="text-xl font-semibold mt-6 mb-3">Dicas de Uso</h3>
             <ul className="list-disc pl-6 mb-6">

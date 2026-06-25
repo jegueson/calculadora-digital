@@ -34,6 +34,17 @@ export default function Page() {
         <div className="bg-white rounded-lg shadow-lg p-6">
           <RescisaoCalculator />
         </div>
+        <p className="text-center text-sm text-gray-600 mt-6">
+          Veja também:{' '}
+          <a href="/calculadora-fgts/" className="text-blue-600 hover:underline">
+            calculadora de FGTS
+          </a>{' '}
+          e{' '}
+          <a href="/calculadora-salario-liquido/" className="text-blue-600 hover:underline">
+            calculadora de salário líquido
+          </a>
+          .
+        </p>
       </div>
     </div>
   );

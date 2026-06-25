@@ -5,12 +5,12 @@ import { getCurrentYear } from '@/utils/date';
 const currentYear = getCurrentYear();
 
 export const metadata: Metadata = {
-  title: `Calculadora de FGTS ${getCurrentYear()} Online Grátis | Calcule seu Saldo e Rendimentos`,
-  description: `Calculadora de FGTS atualizada ${getCurrentYear()}. Calcule seu saldo, rendimentos, projeções e cenários de saque. Simule demissão, aposentadoria e financiamento imobiliário. Grátis e preciso.`,
-  keywords: `calculadora fgts, fgts ${getCurrentYear()}, calcular fgts, saldo fgts, rendimento fgts, saque fgts, fgts demissão, fgts aposentadoria, fgts casa própria, simulador fgts`,
+  title: `Calculadora FGTS ${getCurrentYear()} | Saldo, Saque e Multa de 40%`,
+  description: `Calculadora de FGTS ${getCurrentYear()}. Calcule saldo, saque, multa de 40%, rendimentos e cenários de demissão. Grátis e atualizada.`,
+  keywords: `calculadora fgts, fgts ${getCurrentYear()}, calcular fgts, saldo fgts, multa fgts 40%, saque fgts, fgts demissão, simulador fgts`,
   openGraph: {
-    title: `Calculadora de FGTS ${getCurrentYear()} Online Grátis | Calcule seu Saldo e Rendimentos`,
-    description: `Calculadora de FGTS atualizada ${getCurrentYear()}. Calcule seu saldo, rendimentos, projeções e cenários de saque. Simule demissão, aposentadoria e financiamento imobiliário.`,
+    title: `Calculadora FGTS ${getCurrentYear()} | Saldo, Saque e Multa de 40%`,
+    description: `Calculadora de FGTS ${getCurrentYear()}. Calcule saldo, saque, multa de 40% e rendimentos.`,
     url: 'https://calculadora-digital.com.br/calculadora-fgts/',
     type: 'website',
   },
@@ -332,6 +332,48 @@ export default function FGTSCalculatorPage() {
               <div className="space-y-4">
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h4 className="font-semibold text-gray-800 mb-2">
+                    Como calcular o FGTS mensal?
+                  </h4>
+                  <p className="text-sm text-gray-600">
+                    O empregador deposita 8% do salário bruto todo mês. Exemplo: salário de R$ 3.000
+                    gera depósito de R$ 240 por mês na conta do FGTS.
+                  </p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-gray-800 mb-2">
+                    Como calcular a multa de 40% do FGTS?
+                  </h4>
+                  <p className="text-sm text-gray-600">
+                    Na demissão sem justa causa, o empregador paga 40% sobre o saldo total. Exemplo:
+                    saldo de R$ 10.000 → multa de R$ 4.000, além do saque integral.
+                  </p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-gray-800 mb-2">
+                    Quanto rende o FGTS?
+                  </h4>
+                  <p className="text-sm text-gray-600">
+                    O FGTS rende TR + 3% ao ano, mais distribuição de lucros quando a Caixa tem
+                    resultado positivo. O rendimento é menor que muitos investimentos, mas o fundo
+                    tem liquidez em situações específicas de saque.
+                  </p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-gray-800 mb-2">
+                    Quem tem direito ao saque do FGTS?
+                  </h4>
+                  <p className="text-sm text-gray-600">
+                    Trabalhadores com carteira assinada têm direito ao saque em demissão sem justa
+                    causa, aposentadoria, compra da casa própria, doenças graves e outras situações
+                    previstas em lei. Consulte também nossa{' '}
+                    <a href="/calculadora-rescisao-trabalhista/" className="text-blue-600 hover:underline">
+                      calculadora de rescisão trabalhista
+                    </a>
+                    .
+                  </p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-gray-800 mb-2">
                     Como consultar meu saldo do FGTS?
                   </h4>
                   <p className="text-sm text-gray-600">
@@ -385,8 +427,8 @@ export default function FGTSCalculatorPage() {
               <a href="/juros-compostos/" className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                 Juros Compostos
               </a>
-              <a href="/calculadora-aposentadoria/" className="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                Calculadora de Aposentadoria
+              <a href="/calculadora-fgts/" className="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                Calculadora de FGTS
               </a>
             </div>
           </div>

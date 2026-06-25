@@ -74,6 +74,12 @@ export default function MobileMenu() {
                 🏦 FGTS {currentYear}
               </div>
               <div 
+                onClick={() => handleNavigation('/calculadora-de-horas')}
+                className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-blue-50"
+              >
+                ⏱️ Calculadora de Horas
+              </div>
+              <div 
                 onClick={() => handleNavigation('/calculadora-aposentadoria')}
                 className="cursor-pointer w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:bg-blue-50"
               >

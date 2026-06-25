@@ -33,6 +33,17 @@ export default function Page() {
         <div className="bg-white rounded-lg shadow-lg p-6">
           <DecimoTerceiroFeriasCalculator />
         </div>
+        <p className="text-center text-sm text-gray-600 mt-6">
+          Veja também:{' '}
+          <a href="/calculadora-salario-liquido/" className="text-blue-600 hover:underline">
+            calculadora de salário líquido
+          </a>{' '}
+          e{' '}
+          <a href="/calculadora-hora-extra/" className="text-blue-600 hover:underline">
+            calculadora de hora extra
+          </a>
+          .
+        </p>
       </div>
     </div>
   );

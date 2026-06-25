@@ -33,6 +33,17 @@ export default function Page() {
         <div className="bg-white rounded-lg shadow-lg p-6">
           <CdbCdiCalculator />
         </div>
+        <p className="text-center text-sm text-gray-600 mt-6">
+          Veja também:{' '}
+          <a href="/juros-compostos/" className="text-blue-600 hover:underline">
+            calculadora de juros compostos
+          </a>{' '}
+          e{' '}
+          <a href="/calculo-financiamento-imobiliario/" className="text-blue-600 hover:underline">
+            calculadora de financiamento imobiliário
+          </a>
+          .
+        </p>
       </div>
     </div>
   );

@@ -1,5 +1,22 @@
+import { Metadata } from 'next';
 import React from 'react';
 import PaybackCalculator from '@/components/PaybackCalculator';
+
+export const metadata: Metadata = {
+  title: 'Calculadora de Payback Online | Retorno do Investimento',
+  description:
+    'Calcule o payback do seu investimento online. Descubra em quanto tempo recupera o capital com payback simples e descontado.',
+  alternates: {
+    canonical: 'https://calculadora-digital.com.br/calculo-payback/',
+  },
+  openGraph: {
+    title: 'Calculadora de Payback Online | Retorno do Investimento',
+    description:
+      'Calcule o payback do seu investimento online. Descubra em quanto tempo recupera o capital.',
+    url: 'https://calculadora-digital.com.br/calculo-payback/',
+    type: 'website',
+  },
+};
 
 export default function PaybackCalculatorPage() {
   return (
