@@ -1,193 +1,81 @@
-# Deployment Guide - Social Sharing Features
+# Deployment guide
 
-## 🎯 Overview
-Your social sharing functionality is now ready for deployment! Here's everything you need to know to publish these changes to your website.
+Calculadora Digital is a static Next.js site. Production hosting is Cloudflare Workers static assets. HostGator, FTP, cPanel, and GitHub Pages deploys are retired.
 
-## ✅ Pre-Deployment Checklist
+DNS for `calculadora-digital.com.br` already uses Cloudflare nameservers. Email still uses HostGator. Do not change MX, SPF, or any other mail record when you point the website at Workers.
 
-### 1. Build Verification
+## Build
+
+From this repository:
+
 ```bash
+npm install
 npm run build
 ```
-- ✅ Build completed successfully
-- ✅ No TypeScript errors
-- ✅ All components compile correctly
 
-### 2. Feature Testing
-- ✅ Floating share button works
-- ✅ Homepage social section displays
-- ✅ Footer sharing buttons functional
-- ✅ BMI calculator result sharing works
-- ✅ All social platforms open correctly
+- Build command: `npm run build`
+- Output directory: `build` (`output: 'export'` and `distDir: 'build'` in `next.config.js`)
+- URLs use a trailing slash (`trailingSlash: true`)
 
-## 🚀 Deployment Options
+`npm run build` writes the static site into `build/`, including `404.html`, `public/_redirects`, and `public/_headers`.
 
-### Option 1: Vercel (Recommended)
+## Cloudflare Workers
+
+Configuration lives in `wrangler.jsonc`:
+
+- `assets.directory`: `./build`
+- `assets.not_found_handling`: `404-page`
+- `assets.html_handling`: `auto-trailing-slash` (matches the Next.js trailing slash)
+
+Connect the GitHub repository in the Cloudflare dashboard (Workers & Pages → Create → Workers → connect Git). Workers Builds uses two commands:
+
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy` (the Cloudflare default)
+
+`npx wrangler deploy` reads `wrangler.jsonc` and uploads `./build`. Do not set a second output directory that points somewhere else. Preview builds use `npx wrangler versions upload` (the Cloudflare preview default) and should not be promoted until the checks below pass.
+
+Production deploys happen when the connected branch (usually `main`) is updated. Preview deploys can be enabled for pull requests in the same Cloudflare project.
+
+There is no Worker script. The site is files only.
+
+## Redirects and headers
+
+`public/_redirects` and `public/_headers` are copied into `build/` and applied by Workers. They contain only rules that exist in the root `.htaccess`:
+
+| Apache rule | Workers equivalent |
+| --- | --- |
+| 301 from `/*.html` to the same path without `.html` | `public/_redirects` |
+| `Access-Control-Allow-Origin: *` | `public/_headers` |
+| Serve `path.html` when that file exists | Workers HTML handling (not a redirect) |
+| Send unknown URLs to `/index.html` | Not copied. `not_found_handling` is `404-page`, so unknown URLs return `404.html` |
+
+`.htaccess` has no www-to-apex redirect, no cache rules, and no extra security headers. None were added.
+
+## What was removed
+
+These HostGator and GitHub Pages deploy paths are gone:
+
+- `.cpanel.yml`
+- `.github/workflows/deploy.yml` (FTP to `/public_html` and GitHub Pages)
+- `.github/workflows/nextjs.yml` (GitHub Pages)
+
+Do not upload `build/` by FTP. `cpanel-build.zip` is gitignored and must stay untracked.
+
+## Check after a deploy
+
+- `https://calculadora-digital.com.br/sitemap.xml` lists the calculator URLs with trailing slashes
+- A canonical tag points at `https://calculadora-digital.com.br/.../`
+- `https://calculadora-digital.com.br/robots.txt` is served
+- `https://calculadora-digital.com.br/ads.txt` is served once that file exists in `public/` (it is not in the repo today)
+- An unknown path returns 404, not the homepage
+- `/alguma-pagina.html` redirects to `/alguma-pagina`
+- MX still points at HostGator and SPF still includes `websitewelcome.com`
+
+## Local preview
+
 ```bash
-# If not already connected to Vercel
-npm i -g vercel
-vercel
-
-# Or if already connected
-vercel --prod
-```
-
-### Option 2: Netlify
-```bash
-# Build and deploy
+npm run dev
 npm run build
-# Upload the .next folder to Netlify
 ```
 
-### Option 3: Static Export (if needed)
-```bash
-npm run export
-# Upload the 'out' folder to your hosting provider
-```
-
-### Option 4: Traditional Hosting
-```bash
-npm run build
-# Upload the entire project to your server
-# Ensure Node.js is available on your server
-npm start
-```
-
-## 🔧 Configuration Updates
-
-### 1. Production URL Update
-In `src/app/layout.tsx`, verify the `metadataBase` URL:
-```typescript
-metadataBase: new URL('https://calculadora-digital.com.br'),
-```
-
-### 2. Analytics Configuration
-Ensure your Google Tag Manager ID is correct:
-```typescript
-// In layout.tsx
-'GTM-5LSC26G' // Verify this is your actual GTM ID
-```
-
-## 📱 Mobile Optimization
-
-The social sharing is optimized for Brazilian users:
-- **WhatsApp** integration (most important for Brazil)
-- **Native mobile sharing** API support
-- **Touch-friendly** floating button
-- **Responsive** design for all screen sizes
-
-## 🎨 Customization Options
-
-### Adding to More Calculators
-To add social sharing to other calculators, follow the BMI calculator example:
-
-```typescript
-import ShareCalculationResult from './ShareCalculationResult';
-
-// In your calculator component, after results display:
-<ShareCalculationResult
-  calculatorName="Your Calculator Name"
-  result={yourResultString}
-  inputs={yourInputs}
-  className="mb-6"
-/>
-```
-
-### Customizing Share Messages
-Edit the `generateShareText()` function in `ShareCalculationResult.tsx` to customize messages for different calculators.
-
-## 📊 Analytics Tracking
-
-The implementation includes comprehensive tracking:
-- **Google Analytics 4** events
-- **Google Tag Manager** dataLayer events
-- **Platform-specific** tracking
-- **Calculator-specific** metrics
-
-### Monitoring Share Performance
-After deployment, monitor these metrics:
-1. Share button click rates
-2. Most popular sharing platforms
-3. Calculator result sharing frequency
-4. Mobile vs desktop usage
-
-## 🔍 Testing After Deployment
-
-### 1. Functional Testing
-- [ ] Test all share buttons on production URL
-- [ ] Verify WhatsApp sharing works with actual phone
-- [ ] Check Facebook/Twitter sharing displays correctly
-- [ ] Test copy link functionality
-
-### 2. Mobile Testing
-- [ ] Test on iOS Safari
-- [ ] Test on Android Chrome
-- [ ] Verify native share API works
-- [ ] Check touch interactions
-
-### 3. Analytics Testing
-- [ ] Verify GTM events fire correctly
-- [ ] Check Google Analytics receives data
-- [ ] Test in different browsers
-
-## 🚨 Troubleshooting
-
-### Common Issues and Solutions
-
-#### Share buttons don't work
-- Check browser console for errors
-- Verify popup blockers aren't interfering
-- Test in incognito mode
-
-#### WhatsApp doesn't open
-- Ensure URL encoding is correct
-- Check message length limits
-- Test on actual mobile device
-
-#### Analytics not tracking
-- Verify GTM container ID
-- Check if GTM script loads properly
-- Test dataLayer events in browser dev tools
-
-#### Mobile issues
-- Test on actual devices, not just browser dev tools
-- Check touch target sizes
-- Verify native share API support
-
-## 🎯 Success Metrics
-
-After deployment, you should see:
-- Increased social media traffic
-- Higher engagement on calculator pages
-- More WhatsApp shares (important for Brazilian market)
-- Improved user retention through social proof
-
-## 🔄 Future Enhancements
-
-Consider these additions based on user feedback:
-1. **Share count displays** - Show how many times each calculator was shared
-2. **Custom share images** - Generate images for each calculator result
-3. **Instagram Stories** integration
-4. **QR codes** for easy mobile sharing
-5. **Social login** integration
-
-## 📞 Support
-
-If you encounter any issues during deployment:
-1. Check the browser console for errors
-2. Verify all file paths are correct
-3. Ensure all dependencies are installed
-4. Test with a fresh build
-
-## 🎉 Congratulations!
-
-Your social sharing functionality is now ready to help your users share your valuable calculator tools with their friends and family. This will help grow your user base organically, especially in the Brazilian market where WhatsApp sharing is crucial.
-
-The implementation is:
-- ✅ **Mobile-optimized** for Brazilian users
-- ✅ **Analytics-ready** for performance tracking
-- ✅ **Scalable** for adding to more calculators
-- ✅ **SEO-friendly** with proper meta tags
-- ✅ **Performance-optimized** with minimal impact
-
-Deploy with confidence! 🚀
+`npm run dev` is the Next.js dev server. The production check is `npm run build`, then the contents of `build/`.

@@ -15,6 +15,9 @@
 # production
 /build
 
+# Local cPanel upload archive. Never commit this file.
+/cpanel-build.zip
+
 # misc
 .DS_Store
 *.pem
