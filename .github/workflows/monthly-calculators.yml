@@ -1,0 +1,76 @@
+# Monthly opportunity report. Does not deploy the site and does not edit ads.txt.
+#
+# Required GitHub Actions secrets (repository or environment):
+#   GOOGLE_SA_JSON       Service account JSON key, stored as the secret value itself.
+#   GSC_SITE             Search Console property, for example sc-domain:calculadora-digital.com.br
+#   GA4_PROPERTY_ID      GA4 property id, numeric or properties/123
+#
+# The script exits 0 without opening a pull request when GOOGLE_SA_JSON is missing.
+# It only commits a report after a real API run writes reports/.ready.
+
+name: Monthly calculator opportunities
+
+on:
+  schedule:
+    - cron: '0 9 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build opportunity report
+        env:
+          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+          GSC_SITE: ${{ secrets.GSC_SITE }}
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+        run: node --experimental-strip-types --experimental-detect-module scripts/monthly-calculators.ts
+
+      - name: Open report pull request
+        if: hashFiles('reports/.ready') != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          MONTH=$(date -u +%Y-%m)
+          BRANCH="monthly-report-${MONTH}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin
+          if git show-ref --verify --quiet "refs/remotes/origin/${BRANCH}"; then
+            git checkout -B "${BRANCH}" "origin/${BRANCH}"
+          else
+            git checkout -B "${BRANCH}"
+          fi
+          git add -f "reports/monthly-${MONTH}.md"
+          if git diff --cached --quiet; then
+            echo "Report is unchanged."
+            exit 0
+          fi
+          git commit -m "report: calculator opportunities ${MONTH}"
+          git push origin "${BRANCH}"
+          if gh pr view "${BRANCH}" --json url >/dev/null 2>&1; then
+            echo "Report pull request already exists."
+          else
+            gh pr create \
+              --base main \
+              --head "${BRANCH}" \
+              --title "Calculator opportunities ${MONTH}" \
+              --body "Automated Search Console and GA4 report for ${MONTH}. This pull request does not implement a new calculator and does not change ads or DNS."
+          fi

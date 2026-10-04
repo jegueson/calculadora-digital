@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import CalculatorLayout from '@/components/CalculatorLayout';
 import RetirementCalculator from '@/components/RetirementCalculator';
 import { getCurrentYear } from '@/utils/date';
 
@@ -21,6 +22,7 @@ export const metadata: Metadata = {
 
 export default function RetirementCalculatorPage() {
   return (
+    <CalculatorLayout slug="calculadora-aposentadoria">
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
@@ -117,5 +119,6 @@ export default function RetirementCalculatorPage() {
         </div>
       </div>
     </div>
+    </CalculatorLayout>
   );
 }

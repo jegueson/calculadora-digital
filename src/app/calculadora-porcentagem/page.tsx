@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import CalculatorLayout from '@/components/CalculatorLayout';
 import React from 'react';
 import PercentageCalculator from '@/components/PercentageCalculator';
 
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
 
 export default function PercentageCalculatorPage() {
   return (
+    <CalculatorLayout slug="calculadora-porcentagem">
     <main className="min-h-screen bg-gray-100 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
@@ -134,5 +136,6 @@ export default function PercentageCalculatorPage() {
         </div>
       </div>
     </main>
+    </CalculatorLayout>
   );
 } 

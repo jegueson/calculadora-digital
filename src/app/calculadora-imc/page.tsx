@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import CalculatorLayout from '@/components/CalculatorLayout';
 import BMICalculator from '@/components/BMICalculator';
 import { getCurrentYear } from '@/utils/date';
 
@@ -44,13 +45,8 @@ const structuredData = {
 
 export default function BMICalculatorPage() {
   return (
+    <CalculatorLayout slug="calculadora-imc" jsonLd={structuredData}>
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
-        }}
-      />
       
       <div className="min-h-screen bg-gray-50 py-8 px-4">
         <div className="max-w-6xl mx-auto">
@@ -316,5 +312,6 @@ export default function BMICalculatorPage() {
         </div>
       </div>
     </>
+    </CalculatorLayout>
   );
 } 

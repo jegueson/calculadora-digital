@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import CalculatorLayout from '@/components/CalculatorLayout';
 import HoursCalculator from '@/components/HoursCalculator';
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export const metadata: Metadata = {
 
 export default function HoursCalculatorPage() {
   return (
+    <CalculatorLayout slug="calculadora-de-horas">
     <main className="min-h-screen bg-gray-100 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <header className="text-center mb-8">
@@ -93,5 +95,6 @@ export default function HoursCalculatorPage() {
         </div>
       </div>
     </main>
+    </CalculatorLayout>
   );
 }
