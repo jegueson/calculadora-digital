@@ -5,7 +5,10 @@ import Link from 'next/link';
 import Script from 'next/script';
 import MobileMenu from '@/components/MobileMenu';
 import DesktopNavigation from '@/components/DesktopNavigation';
+import DeferredAnalytics from '@/components/DeferredAnalytics';
 import SocialShare from '@/components/SocialShare';
+import { calculatorPath, formatLabel, getFooterGroup, getPublishedCalculators } from '@/data/calculators';
+import { GTM_ID } from '@/lib/analytics-ids';
 import { getCurrentYear } from '@/utils/date';
 
 const currentYear = getCurrentYear();
@@ -90,16 +93,7 @@ const structuredData = {
     "url": "https://calculadora-digital.com.br"
   },
   "applicationSubCategory": "Calculator",
-  "featureList": [
-    "Calculadora Científica",
-    "Calculadora de Porcentagem",
-    "Calculadora de Financiamento Imobiliário",
-    "Calculadora de Juros Compostos",
-    "Calculadora de Payback",
-    "Gerador de Senha",
-    "Calculadora de IMC",
-    "Calculadora de Imposto de Renda"
-  ],
+  "featureList": getPublishedCalculators().map((entry) => entry.title),
   "browserRequirements": "Requires JavaScript. Requires HTML5."
 };
 
@@ -120,16 +114,7 @@ export default function RootLayout({
           }}
         />
         
-        {/* Google Tag Manager */}
-        <Script id="google-tag-manager" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-5LSC26G');
-          `}
-        </Script>
+        <DeferredAnalytics />
         
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -144,7 +129,7 @@ export default function RootLayout({
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe 
-            src="https://www.googletagmanager.com/ns.html?id=GTM-5LSC26G"
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
             height="0" 
             width="0" 
             style={{display: 'none', visibility: 'hidden'}}
@@ -183,45 +168,50 @@ export default function RootLayout({
               <div>
                 <h3 className="text-lg font-semibold mb-4">🔥 Mais Populares</h3>
                 <ul className="space-y-2">
-                  <li><Link href="/calculadora-imposto-renda/" className="text-gray-300 hover:text-white">📊 Imposto de Renda {currentYear}</Link></li>
-                  <li><Link href="/calculadora-imc/" className="text-gray-300 hover:text-white">⚖️ Calculadora IMC</Link></li>
-                  <li><Link href="/calculadora-fgts/" className="text-gray-300 hover:text-white">🏦 FGTS {currentYear}</Link></li>
-                  <li><Link href="/calculadora-calorias/" className="text-gray-300 hover:text-white">🍎 Calorias & Dieta</Link></li>
+                  {getFooterGroup('populares').map((entry) => (
+                    <li key={entry.slug}>
+                      <Link href={calculatorPath(entry.slug)} className="text-gray-300 hover:text-white">
+                        {formatLabel(entry.footerLabel ?? entry.title, entry.footerWithYear, currentYear)}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Calculadoras Financeiras</h3>
                 <ul className="space-y-2">
-                  <li><Link href="/juros-compostos/" className="text-gray-300 hover:text-white">Juros Compostos</Link></li>
-                  <li><Link href="/calculo-financiamento-imobiliario/" className="text-gray-300 hover:text-white">Financiamento Imobiliário</Link></li>
-                  <li><Link href="/calculadora-financiamento-veiculo/" className="text-gray-300 hover:text-white">Financiamento Veículo</Link></li>
-                  <li><Link href="/calculadora-consorcio/" className="text-gray-300 hover:text-white">Consórcio</Link></li>
-                  <li><Link href="/calculadora-cdb-cdi/" className="text-gray-300 hover:text-white">CDB / CDI</Link></li>
-                  <li><Link href="/calculadora-cartao-credito/" className="text-gray-300 hover:text-white">Cartão de Crédito</Link></li>
-                  <li><Link href="/calculo-payback/" className="text-gray-300 hover:text-white">Payback</Link></li>
-                  <li><Link href="/calculadora-aposentadoria/" className="text-gray-300 hover:text-white">Aposentadoria</Link></li>
+                  {getFooterGroup('financas').map((entry) => (
+                    <li key={entry.slug}>
+                      <Link href={calculatorPath(entry.slug)} className="text-gray-300 hover:text-white">
+                        {formatLabel(entry.footerLabel ?? entry.title, entry.footerWithYear, currentYear)}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Trabalho &amp; Brasil</h3>
                 <ul className="space-y-2">
-                  <li><Link href="/calculadora-salario-liquido/" className="text-gray-300 hover:text-white">Salário Líquido</Link></li>
-                  <li><Link href="/calculadora-rescisao-trabalhista/" className="text-gray-300 hover:text-white">Rescisão</Link></li>
-                  <li><Link href="/calculadora-13-ferias/" className="text-gray-300 hover:text-white">13º e Férias</Link></li>
-                  <li><Link href="/calculadora-hora-extra/" className="text-gray-300 hover:text-white">Horas Extras</Link></li>
-                  <li><Link href="/calculadora-vale-transporte/" className="text-gray-300 hover:text-white">Vale-Transporte</Link></li>
-                  <li><Link href="/calculadora-das-mei/" className="text-gray-300 hover:text-white">DAS MEI</Link></li>
-                  <li><Link href="/calculadora-bpc-loas/" className="text-gray-300 hover:text-white">BPC / Renda</Link></li>
+                  {getFooterGroup('trabalho').map((entry) => (
+                    <li key={entry.slug}>
+                      <Link href={calculatorPath(entry.slug)} className="text-gray-300 hover:text-white">
+                        {formatLabel(entry.footerLabel ?? entry.title, entry.footerWithYear, currentYear)}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">🧮 Ferramentas Básicas</h3>
                 <ul className="space-y-2">
                   <li><Link href="/" className="text-gray-300 hover:text-white">🧮 Calculadora Básica</Link></li>
-                  <li><Link href="/calculadora-cientifica/" className="text-gray-300 hover:text-white">🔬 Científica</Link></li>
-                  <li><Link href="/calculadora-porcentagem/" className="text-gray-300 hover:text-white">% Porcentagem</Link></li>
-                  <li><Link href="/calculadora-de-horas/" className="text-gray-300 hover:text-white">⏱️ Horas</Link></li>
-                  <li><Link href="/gerador-senha/" className="text-gray-300 hover:text-white">🔐 Gerador de Senha</Link></li>
+                  {getFooterGroup('basicas').map((entry) => (
+                    <li key={entry.slug}>
+                      <Link href={calculatorPath(entry.slug)} className="text-gray-300 hover:text-white">
+                        {formatLabel(entry.footerLabel ?? entry.title, entry.footerWithYear, currentYear)}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div>

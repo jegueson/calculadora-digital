@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import CalculatorLayout from '@/components/CalculatorLayout';
 import FGTSCalculator from '@/components/FGTSCalculator';
 import { getCurrentYear } from '@/utils/date';
 
@@ -44,13 +45,8 @@ const structuredData = {
 
 export default function FGTSCalculatorPage() {
   return (
+    <CalculatorLayout slug="calculadora-fgts" jsonLd={structuredData}>
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
-        }}
-      />
       
       <div className="min-h-screen bg-gray-50 py-8 px-4">
         <div className="max-w-6xl mx-auto">
@@ -435,5 +431,6 @@ export default function FGTSCalculatorPage() {
         </div>
       </div>
     </>
+    </CalculatorLayout>
   );
 } 

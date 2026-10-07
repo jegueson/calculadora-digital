@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import CalculatorLayout from '@/components/CalculatorLayout';
 import React from 'react';
 import PaybackCalculator from '@/components/PaybackCalculator';
 
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
 
 export default function PaybackCalculatorPage() {
   return (
+    <CalculatorLayout slug="calculo-payback">
     <main className="min-h-screen bg-gray-100 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
@@ -84,5 +86,6 @@ export default function PaybackCalculatorPage() {
         </div>
       </div>
     </main>
+    </CalculatorLayout>
   );
 } 

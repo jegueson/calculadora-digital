@@ -1,0 +1,15 @@
+{
+  // Cloudflare Workers static assets. No Worker script: the site stays a Next.js static export.
+  "name": "calculadora-digital",
+  // Compatibility date for this configuration. Asset serving only; no Worker runtime flags required.
+  "compatibility_date": "2026-10-04",
+  "assets": {
+    "directory": "./build",
+    // Unknown URLs serve the nearest 404.html with status 404.
+    // This replaces the old Apache rewrite that sent every miss to /index.html.
+    "not_found_handling": "404-page",
+    // Next.js trailingSlash writes folder/index.html. Serve those URLs with a trailing slash
+    // and leave real files (css, js, images) unchanged.
+    "html_handling": "auto-trailing-slash"
+  }
+}

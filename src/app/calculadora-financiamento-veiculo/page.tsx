@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import CalculatorLayout from '@/components/CalculatorLayout';
 import VehicleFinanceCalculator from '@/components/VehicleFinanceCalculator';
 import { getCurrentYear } from '@/utils/date';
 
@@ -21,6 +22,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
+    <CalculatorLayout slug="calculadora-financiamento-veiculo">
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <header className="text-center mb-8">
@@ -36,5 +38,6 @@ export default function Page() {
         </div>
       </div>
     </div>
+    </CalculatorLayout>
   );
 }

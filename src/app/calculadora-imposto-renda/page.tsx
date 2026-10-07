@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import CalculatorLayout from '@/components/CalculatorLayout';
 import TaxCalculator from '@/components/TaxCalculator';
 import { getCurrentYear } from '@/utils/date';
 
@@ -43,13 +44,8 @@ const structuredData = {
 
 export default function TaxCalculatorPage() {
   return (
+    <CalculatorLayout slug="calculadora-imposto-renda" jsonLd={structuredData}>
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
-        }}
-      />
       
       <div className="min-h-screen bg-gray-50 py-8 px-4">
         <div className="max-w-6xl mx-auto">
@@ -227,5 +223,6 @@ export default function TaxCalculatorPage() {
         </div>
       </div>
     </>
+    </CalculatorLayout>
   );
 } 

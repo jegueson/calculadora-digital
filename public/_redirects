@@ -1,0 +1,7 @@
+# Translated from the root .htaccess rule:
+#   RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*\.html\ HTTP/
+#   RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+# A request for /page.html (or /section/page.html) redirects to the same path without .html.
+# Trailing slashes are not added or removed here. Next.js trailingSlash and
+# wrangler html_handling "auto-trailing-slash" own that behavior.
+/*.html /:splat 301

@@ -1,0 +1,6 @@
+# Translated from the root .htaccess rule:
+#   Header set Access-Control-Allow-Origin "*"
+# Apache AddType and FilesMatch "Allow from all" are not custom response headers.
+# There is no www/apex redirect, cache policy, or other security header in .htaccess.
+/*
+  Access-Control-Allow-Origin: *

@@ -1,6 +1,7 @@
 import React from 'react';
 import Calculator from '@/components/Calculator';
 import SocialShare from '@/components/SocialShare';
+import { calculatorPath, formatLabel, getHomeCards } from '@/data/calculators';
 import { getCurrentYear } from '@/utils/date';
 
 const currentYear = getCurrentYear();
@@ -26,47 +27,19 @@ export default function Home() {
             🔥 Calculadoras Mais Usadas
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <a href="/calculadora-cientifica/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-indigo-50 hover:bg-indigo-100">
-              <div className="text-3xl mb-2">🔬</div>
-              <h3 className="font-semibold text-gray-800 mb-1">Calculadora científica online</h3>
-              <p className="text-sm text-gray-600">Funções avançadas: seno, logaritmo e mais</p>
-            </a>
-
-            <a href="/calculadora-porcentagem/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-orange-50 hover:bg-orange-100">
-              <div className="text-3xl mb-2">%</div>
-              <h3 className="font-semibold text-gray-800 mb-1">Calculadora de porcentagem</h3>
-              <p className="text-sm text-gray-600">Desconto, aumento e proporções</p>
-            </a>
-
-            <a href="/calculadora-de-horas/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-teal-50 hover:bg-teal-100">
-              <div className="text-3xl mb-2">⏱️</div>
-              <h3 className="font-semibold text-gray-800 mb-1">Calculadora de horas</h3>
-              <p className="text-sm text-gray-600">Somar, subtrair e calcular tempo</p>
-            </a>
-
-            <a href="/calculadora-salario-liquido/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-cyan-50 hover:bg-cyan-100">
-              <div className="text-3xl mb-2">💼</div>
-              <h3 className="font-semibold text-gray-800 mb-1">Calculadora de Salário Líquido</h3>
-              <p className="text-sm text-gray-600">INSS, IRRF e vale-transporte</p>
-            </a>
-
-            <a href="/calculadora-fgts/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-yellow-50 hover:bg-yellow-100">
-              <div className="text-3xl mb-2">🏦</div>
-              <h3 className="font-semibold text-gray-800 mb-1">Calculadora FGTS {currentYear}</h3>
-              <p className="text-sm text-gray-600">Simule saldo e saques do FGTS</p>
-            </a>
-
-            <a href="/juros-compostos/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-purple-50 hover:bg-purple-100">
-              <div className="text-3xl mb-2">📈</div>
-              <h3 className="font-semibold text-gray-800 mb-1">Calculadora de Juros Compostos</h3>
-              <p className="text-sm text-gray-600">Simule investimentos e rendimentos</p>
-            </a>
-
-            <a href="/calculadora-imc/" className="block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow bg-green-50 hover:bg-green-100">
-              <div className="text-3xl mb-2">⚖️</div>
-              <h3 className="font-semibold text-gray-800 mb-1">Calculadora de IMC</h3>
-              <p className="text-sm text-gray-600">Avalie seu peso ideal e saúde</p>
-            </a>
+            {getHomeCards().map((entry) => (
+              <a
+                key={entry.slug}
+                href={calculatorPath(entry.slug)}
+                className={`block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow ${entry.home?.className ?? ''}`}
+              >
+                <div className="text-3xl mb-2">{entry.home?.emoji}</div>
+                <h3 className="font-semibold text-gray-800 mb-1">
+                  {formatLabel(entry.home?.title ?? entry.title, entry.home?.withYear, currentYear)}
+                </h3>
+                <p className="text-sm text-gray-600">{entry.home?.description}</p>
+              </a>
+            ))}
           </div>
           
           <div className="text-center mt-6">
