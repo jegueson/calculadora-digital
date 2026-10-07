@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import CalculatorLayout from '@/components/CalculatorLayout';
 import CompoundInterestCalculator from '@/components/CompoundInterestCalculator';
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
 
 export default function CompoundInterestPage() {
   return (
+    <CalculatorLayout slug="juros-compostos">
     <main className="min-h-screen p-8 bg-gray-100">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">
@@ -83,5 +85,6 @@ export default function CompoundInterestPage() {
         </div>
       </div>
     </main>
+    </CalculatorLayout>
   );
 }

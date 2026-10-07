@@ -18,6 +18,9 @@
 # Local cPanel upload archive. Never commit this file.
 /cpanel-build.zip
 
+# Monthly report output. The workflow force-adds the markdown on its own branch.
+/reports/
+
 # misc
 .DS_Store
 *.pem

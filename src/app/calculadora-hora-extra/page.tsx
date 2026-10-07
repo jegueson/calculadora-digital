@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import CalculatorLayout from '@/components/CalculatorLayout';
 import HoraExtraCalculator from '@/components/HoraExtraCalculator';
 import { getCurrentYear } from '@/utils/date';
 
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
+    <CalculatorLayout slug="calculadora-hora-extra">
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <header className="text-center mb-8">
@@ -33,22 +35,8 @@ export default function Page() {
         <div className="bg-white rounded-lg shadow-lg p-6">
           <HoraExtraCalculator />
         </div>
-        <p className="text-center text-sm text-gray-600 mt-6">
-          Veja também:{' '}
-          <a href="/calculadora-salario-liquido/" className="text-blue-600 hover:underline">
-            calculadora de salário líquido
-          </a>
-          ,{' '}
-          <a href="/calculadora-13-ferias/" className="text-blue-600 hover:underline">
-            calculadora de 13º e férias
-          </a>{' '}
-          e{' '}
-          <a href="/calculadora-de-horas/" className="text-blue-600 hover:underline">
-            calculadora de horas
-          </a>
-          .
-        </p>
       </div>
     </div>
+    </CalculatorLayout>
   );
 }

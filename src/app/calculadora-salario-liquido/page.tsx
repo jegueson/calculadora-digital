@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import CalculatorLayout from '@/components/CalculatorLayout';
 import NetSalaryCalculator from '@/components/NetSalaryCalculator';
 import { getCurrentYear } from '@/utils/date';
 import { calcNetSalaryInputs } from '@/utils/brazilPayroll';
@@ -29,6 +30,7 @@ const exampleSalaries = [2000, 3000, 5000, 10000];
 
 export default function Page() {
   return (
+    <CalculatorLayout slug="calculadora-salario-liquido">
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <header className="text-center mb-8">
@@ -162,24 +164,10 @@ export default function Page() {
               </li>
             </ul>
 
-            <p className="text-sm text-gray-600">
-              Veja também:{' '}
-              <a href="/calculadora-hora-extra/" className="text-blue-600 hover:underline">
-                calculadora de hora extra
-              </a>
-              ,{' '}
-              <a href="/calculadora-13-ferias/" className="text-blue-600 hover:underline">
-                calculadora de 13º e férias
-              </a>{' '}
-              e{' '}
-              <a href="/calculadora-vale-transporte/" className="text-blue-600 hover:underline">
-                calculadora de vale-transporte
-              </a>
-              .
-            </p>
           </article>
         </div>
       </div>
     </div>
+    </CalculatorLayout>
   );
 }
