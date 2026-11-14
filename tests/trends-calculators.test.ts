@@ -65,3 +65,29 @@ test('exact age handles month borrow', () => {
   assert.equal(age.months, 9);
   assert.equal(age.days, 18);
 });
+
+test('exact age never returns negative days after short-month borrow', () => {
+  const birth = parseISODateLocal('2026-01-31');
+  const today = parseISODateLocal('2026-03-01');
+  assert.ok(birth && today);
+  const age = calcExactAge(birth, today);
+  assert.ok(age);
+  assert.equal(age.years, 0);
+  assert.equal(age.months, 0);
+  assert.equal(age.days, 29);
+  assert.ok(age.days >= 0);
+});
+
+test('fuel compare rejects zero prices with Portuguese error', () => {
+  assert.throws(
+    () => compareEthanolGasoline({ ethanolPrice: 0, gasolinePrice: 6 }),
+    /preços maiores que zero/i
+  );
+});
+
+test('business days count is absolute when dates are reversed in the UI helper path', () => {
+  const start = parseISODateLocal('2026-11-16');
+  const end = parseISODateLocal('2026-11-09');
+  assert.ok(start && end);
+  assert.equal(Math.abs(countBusinessDays(start, end, { excludeFixedHolidays: false })), 5);
+});

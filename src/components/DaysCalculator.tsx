@@ -35,7 +35,9 @@ export default function DaysCalculator() {
     }
     return {
       kind: 'business' as const,
-      days: countBusinessDays(a, b, { excludeFixedHolidays: excludeHolidays }),
+      days: Math.abs(
+        countBusinessDays(a, b, { excludeFixedHolidays: excludeHolidays })
+      ),
     };
   }, [mode, start, end, base, offset, excludeHolidays]);
 

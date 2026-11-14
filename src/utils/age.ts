@@ -20,9 +20,20 @@ export function calcExactAge(birthDate: Date, today: Date = new Date()): ExactAg
   let days = now.getDate() - birth.getDate();
 
   if (days < 0) {
-    months -= 1;
-    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-    days += prevMonth.getDate();
+    // Borrow full months until the day remainder is non-negative.
+    // Needed when the previous month is shorter than the day deficit
+    // (e.g. born on the 31st, today is March 1 after a 28-day February).
+    let anchorYear = now.getFullYear();
+    let anchorMonth = now.getMonth();
+    while (days < 0) {
+      months -= 1;
+      days += new Date(anchorYear, anchorMonth, 0).getDate();
+      anchorMonth -= 1;
+      if (anchorMonth < 0) {
+        anchorMonth = 11;
+        anchorYear -= 1;
+      }
+    }
   }
   if (months < 0) {
     years -= 1;

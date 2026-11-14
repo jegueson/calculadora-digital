@@ -30,7 +30,7 @@ export function compareEthanolGasoline(input: FuelCompareInput): FuelCompareResu
   } = input;
 
   if (ethanolPrice <= 0 || gasolinePrice <= 0) {
-    throw new Error('Prices must be greater than zero.');
+    throw new Error('Informe preços maiores que zero para etanol e gasolina.');
   }
 
   const ratio = ethanolPrice / gasolinePrice;
