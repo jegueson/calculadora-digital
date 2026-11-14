@@ -40,5 +40,5 @@ test('sitemap lists the home page and published calculators only', () => {
   }
   assert.equal(urls.some((url) => url.includes('calculo-hipoteca')), false);
   assert.equal(urls.some((url) => url.includes('calendario-feriados')), false);
-  assert.equal(entries.length, 24);
+  assert.equal(entries.length, 32);
 });

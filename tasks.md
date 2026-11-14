@@ -49,12 +49,34 @@
 - ✅ Cross-links: FGTS↔Rescisão, Salário↔Hora Extra↔13º, Juros↔CDB↔Financiamento, IMC↔Calorias
 
 ### Backlog — future calculator pages (not built)
-- [ ] `/calculadora-de-datas/` — calculadora de datas
 - [ ] `/calculadora-financeira/` — calculadora financeira
 - [ ] `/calculadora-juros-compostos-diarios/` — juros compostos diários
-- [ ] `/calculadora-folha-pagamento/` — cálculo folha de pagamento
-- [ ] `/calculadora-contagem-regressiva/` — contagem regressiva
 - [ ] `/calculadora-binario/` — calculadora binário
+- [ ] `/calculadora-dolar/` — conversão com cotação informada pelo usuário
+- [ ] `/calculadora-antt/` / frete — frete ANTT (rising Trends query)
+
+## ✅ Traffic recovery — Google Trends BR (in progress)
+
+### Research (completed)
+- [x] Trends related queries for “calculadora” in BR (12 months)
+- [x] Prioritize: gestacional, dias/úteis, juros, regra de três, folha, álcool×gasolina, idade, contagem regressiva
+- [x] Geo interest strongest in DF, RN, PR, MT, PB, SC (relative)
+
+### PR A — Trend calculator landing pages
+- [x] `/calculadora-gestacional/`
+- [x] `/calculadora-de-dias/`
+- [x] `/calculadora-juros-simples/`
+- [x] `/calculadora-regra-de-tres/`
+- [x] `/calculadora-folha-pagamento/`
+- [x] `/calculadora-alcool-ou-gasolina/`
+- [x] `/calculadora-idade/`
+- [x] `/calculadora-contagem-regressiva/`
+- [x] Registry + sitemap + tests
+
+### PR B — Geo landing pages
+- [ ] Hub `/calculadoras-por-cidade/`
+- [ ] City pages under `/br/[slug]/` for major metros
+- [ ] Unique local copy + internal links + sitemap
 
 ## Next Priority Tasks (Phase 2)
 
