@@ -16,8 +16,9 @@ Create a modern, responsive web application that serves as a one-stop solution f
 
 ## Traffic Growth Initiative (Nov 2026)
 Based on Google Trends (BR, last 12 months) for “calculadora”:
-- Priority new tools: gestacional, dias/dias úteis, juros (simples), regra de três, folha de pagamento, álcool×gasolina, idade, contagem regressiva
-- Geo landing pages for major Brazilian metros/states with unique local copy and internal links
+- Priority new tools (merged): gestacional, dias/dias úteis, juros (simples), regra de três, folha de pagamento, álcool×gasolina, idade, contagem regressiva
+- Geo landing pages: hub + major Brazilian metros with unique local copy and internal links
+- Trends cue: relative interest strong in DF, RN, PR, MT, PB, SC; absolute volume led by large metros
 - Keep registry-driven sitemap/navigation for discoverability
 
 ## Technical Architecture

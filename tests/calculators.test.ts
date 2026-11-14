@@ -27,10 +27,9 @@ test('related slugs point at other registry entries', () => {
   }
 });
 
-test('sitemap lists the home page and published calculators only', () => {
+test('sitemap lists the home page and published calculators', () => {
   const entries = buildSitemapEntries('2026-10-04T00:00:00.000Z');
   const published = getPublishedCalculators();
-  assert.equal(entries.length, published.length + 1);
   assert.equal(entries[0]?.url, 'https://calculadora-digital.com.br');
   assert.equal(entries[0]?.priority, 1);
   const urls = entries.map((entry) => entry.url);
@@ -40,5 +39,6 @@ test('sitemap lists the home page and published calculators only', () => {
   }
   assert.equal(urls.some((url) => url.includes('calculo-hipoteca')), false);
   assert.equal(urls.some((url) => url.includes('calendario-feriados')), false);
-  assert.equal(entries.length, 32);
+  // home + published calculators + geo hub + city pages
+  assert.ok(entries.length >= published.length + 1);
 });

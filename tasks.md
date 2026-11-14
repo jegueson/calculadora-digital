@@ -55,14 +55,14 @@
 - [ ] `/calculadora-dolar/` — conversão com cotação informada pelo usuário
 - [ ] `/calculadora-antt/` / frete — frete ANTT (rising Trends query)
 
-## ✅ Traffic recovery — Google Trends BR (in progress)
+## ✅ Traffic recovery — Google Trends BR
 
 ### Research (completed)
 - [x] Trends related queries for “calculadora” in BR (12 months)
 - [x] Prioritize: gestacional, dias/úteis, juros, regra de três, folha, álcool×gasolina, idade, contagem regressiva
 - [x] Geo interest strongest in DF, RN, PR, MT, PB, SC (relative)
 
-### PR A — Trend calculator landing pages
+### PR A — Trend calculator landing pages (merged)
 - [x] `/calculadora-gestacional/`
 - [x] `/calculadora-de-dias/`
 - [x] `/calculadora-juros-simples/`
@@ -74,9 +74,9 @@
 - [x] Registry + sitemap + tests
 
 ### PR B — Geo landing pages
-- [ ] Hub `/calculadoras-por-cidade/`
-- [ ] City pages under `/br/[slug]/` for major metros
-- [ ] Unique local copy + internal links + sitemap
+- [x] Hub `/calculadoras-por-cidade/`
+- [x] City pages under `/br/[slug]/` for major metros
+- [x] Unique local copy + internal links + sitemap + tests
 
 ## Next Priority Tasks (Phase 2)
 
