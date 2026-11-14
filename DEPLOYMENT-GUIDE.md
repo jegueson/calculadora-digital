@@ -31,7 +31,7 @@ Connect the GitHub repository in the Cloudflare dashboard (Workers & Pages → C
 
 - Build command: `npm run build`
 - Deploy command: `npm run deploy` (runs `wrangler deploy --no-autoconfig`)
-- Preview deploy command (if separate): `npm run deploy:preview` (runs `wrangler versions upload --no-autoconfig`)
+- Preview deploy command (if separate): `npm run deploy:preview` (runs `wrangler versions upload`; autoconfig does not apply to this command)
 
 **Important:** do **not** use bare `npx wrangler deploy`. Newer Wrangler enables framework autoconfig by default, detects Next.js, and tries to install OpenNext — which breaks this static-export site (`output: 'export'` / `distDir: 'build'`). The Oct 2026 failure (`ENOENT ... pages-manifest.json` under OpenNext) was that path.
 
