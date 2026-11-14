@@ -1,4 +1,9 @@
 import { getPublishedCalculators, SITE_URL, type ChangeFrequency } from './calculators.ts';
+import {
+  GEO_HUB_CANONICAL,
+  geoCanonical,
+  getAllGeoLocations,
+} from './geo-locations.ts';
 
 export interface SitemapEntry {
   url: string;
@@ -8,7 +13,8 @@ export interface SitemapEntry {
 }
 
 /**
- * Home plus every published calculator. Placeholder routes stay out.
+ * Home, published calculators, and Brazil geo landing pages.
+ * Placeholder calculator routes stay out.
  */
 export function buildSitemapEntries(lastModified: string): SitemapEntry[] {
   const home: SitemapEntry = {
@@ -27,5 +33,19 @@ export function buildSitemapEntries(lastModified: string): SitemapEntry[] {
       priority: entry.sitemapPriority,
     }));
 
-  return [home, ...calculators];
+  const geoHub: SitemapEntry = {
+    url: GEO_HUB_CANONICAL,
+    lastModified,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  };
+
+  const geoPages = getAllGeoLocations().map((location) => ({
+    url: geoCanonical(location.slug),
+    lastModified,
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
+
+  return [home, ...calculators, geoHub, ...geoPages];
 }

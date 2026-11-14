@@ -49,12 +49,21 @@
 - ✅ Cross-links: FGTS↔Rescisão, Salário↔Hora Extra↔13º, Juros↔CDB↔Financiamento, IMC↔Calorias
 
 ### Backlog — future calculator pages (not built)
-- [ ] `/calculadora-de-datas/` — calculadora de datas
 - [ ] `/calculadora-financeira/` — calculadora financeira
 - [ ] `/calculadora-juros-compostos-diarios/` — juros compostos diários
-- [ ] `/calculadora-folha-pagamento/` — cálculo folha de pagamento
-- [ ] `/calculadora-contagem-regressiva/` — contagem regressiva
 - [ ] `/calculadora-binario/` — calculadora binário
+- [ ] `/calculadora-dolar/` — cotação informada pelo usuário
+- [ ] `/calculadora-antt/` / frete — frete ANTT (rising Trends)
+
+## ✅ Traffic recovery — Google Trends BR
+
+### PR A — Trend calculator landing pages
+- Tracked on branch `cursor/trends-calculator-pages-440a` (separate PR)
+
+### PR B — Geo landing pages
+- [x] Hub `/calculadoras-por-cidade/`
+- [x] City pages under `/br/[slug]/` for major metros
+- [x] Unique local copy + internal links + sitemap + tests
 
 ## Next Priority Tasks (Phase 2)
 

@@ -1,51 +1,23 @@
 # Calculadora Digital Online - Project Objective
 
 ## Project Goal
-Develop and maintain a comprehensive digital calculator platform that provides free, accessible, and user-friendly mathematical and financial calculation tools for students, professionals, and general users.
+Develop and maintain a comprehensive digital calculator platform that provides free, accessible, and user-friendly mathematical and financial calculation tools for students, professionals, and general users in Brazil.
 
 ## Primary Purpose
-Create a modern, responsive web application that serves as a one-stop solution for various types of calculations, eliminating the need for multiple calculator apps or software installations.
+Create a modern, responsive web application that serves as a one-stop solution for various types of calculations, eliminating the need for multiple calculator apps or software installations. Grow organic traffic with SEO-optimized calculator and geo landing pages aligned to Brazilian search demand (Google Trends).
 
-## Key Features Currently Implemented
-- **Basic Calculator**: Standard arithmetic operations with history tracking
-- **Percentage Calculator**: Discount, increase, and percentage variation calculations
-- **Compound Interest Calculator**: Investment and loan analysis
-- **Property Finance Calculator**: Mortgage and real estate financing simulations
-- **Scientific Calculator**: Advanced mathematical functions
-- **Payback Calculator**: Investment return analysis
-- **Password Generator**: Secure password creation tool
-- **Holiday Calendar**: (In development)
-- **Mortgage Calculator**: Specialized mortgage calculations
+## Traffic Growth Initiative (Nov 2026)
+- Trend calculator pages (separate PR): gestacional, dias, juros simples, regra de três, folha, álcool×gasolina, idade, contagem regressiva
+- Geo landing pages: hub + major metros/states with unique local copy and internal links to core calculators
+- Trends cue: relative interest strong in DF, RN, PR, MT, PB, SC; absolute volume led by large metros
 
 ## Technical Architecture
-- **Frontend**: Next.js 15 with TypeScript
+- **Frontend**: Next.js 15 (static `output: 'export'`) with TypeScript
 - **Styling**: TailwindCSS 4.0
 - **UI Components**: React 19 with custom components
-- **Charts**: Chart.js with React-ChartJS-2
-- **Notifications**: React Hot Toast
-- **Icons**: React Icons
-- **Deployment**: Configured for cPanel hosting
-
-## Target Audience
-- Students and educators
-- Financial professionals
-- Small business owners
-- General users needing quick calculations
-- Anyone requiring specialized financial calculations
-
-## Business Value
-- Provide free access to professional-grade calculation tools
-- Reduce dependency on external software
-- Improve user productivity through intuitive interfaces
-- Support educational and professional needs
-- Maintain competitive advantage through comprehensive tool suite
+- **Deployment**: Cloudflare Workers (`wrangler.jsonc`)
 
 ## Success Metrics
-- User engagement and retention
-- Calculation accuracy and performance
-- Mobile responsiveness and accessibility
-- SEO performance and discoverability
-- Load times and user experience quality
-
-## Long-term Vision
-Become the go-to online platform for all calculation needs, expanding to include more specialized tools while maintaining simplicity and accessibility. 
+- Recover weekly organic traffic decline via new indexed landing pages
+- SEO: unique titles/canonicals, FAQ JSON-LD, internal linking
+- Calculation accuracy and mobile UX
