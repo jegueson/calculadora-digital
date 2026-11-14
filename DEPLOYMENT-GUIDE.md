@@ -27,12 +27,17 @@ Configuration lives in `wrangler.jsonc`:
 - `assets.not_found_handling`: `404-page`
 - `assets.html_handling`: `auto-trailing-slash` (matches the Next.js trailing slash)
 
-Connect the GitHub repository in the Cloudflare dashboard (Workers & Pages → Create → Workers → connect Git). Workers Builds uses two commands:
+Connect the GitHub repository in the Cloudflare dashboard (Workers & Pages → Create → Workers → connect Git). Workers Builds must use:
 
 - Build command: `npm run build`
-- Deploy command: `npx wrangler deploy` (the Cloudflare default)
+- Deploy command (production branch): `npm run deploy` (runs `wrangler deploy --no-autoconfig`)
+- Preview command (PR / non-production branches): `npm run deploy:preview` (runs `wrangler preview`)
 
-`npx wrangler deploy` reads `wrangler.jsonc` and uploads `./build`. Do not set a second output directory that points somewhere else. Preview builds use `npx wrangler versions upload` (the Cloudflare preview default) and should not be promoted until the checks below pass.
+**Important:** do **not** use bare `npx wrangler deploy` as the only deploy path without review. Newer Wrangler enables framework autoconfig by default, detects Next.js, and can try to install OpenNext — which breaks this static-export site (`output: 'export'` / `distDir: 'build'`). The Oct 2026 failure (`ENOENT ... pages-manifest.json` under OpenNext) was that path.
+
+PR preview builds default to `npx wrangler preview`, which **requires** a `previews` block in `wrangler.jsonc` (empty `{}` is fine for this assets-only Worker). Without it, preview deploys fail even when `npm run build` succeeds.
+
+`npm run deploy` / `npm run deploy:preview` read `wrangler.jsonc` and upload `./build` only. Do not set a Cloudflare “output directory” of `.next`. Preview builds should not be promoted until the checks below pass.
 
 Production deploys happen when the connected branch (usually `main`) is updated. Preview deploys can be enabled for pull requests in the same Cloudflare project.
 
