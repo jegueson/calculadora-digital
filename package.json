@@ -10,7 +10,7 @@
     "test": "node --experimental-strip-types --experimental-detect-module --test tests/*.test.ts",
     "export": "next export",
     "deploy": "wrangler deploy --no-autoconfig",
-    "deploy:preview": "wrangler versions upload"
+    "deploy:preview": "wrangler preview"
   },
   "dependencies": {
     "chart.js": "^4.4.9",

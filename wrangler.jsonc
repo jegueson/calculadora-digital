@@ -14,5 +14,8 @@
     // Next.js trailingSlash writes folder/index.html. Serve those URLs with a trailing slash
     // and leave real files (css, js, images) unchanged.
     "html_handling": "auto-trailing-slash"
-  }
+  },
+  // Required for Workers Builds PR previews (`npx wrangler preview`). Can be empty for
+  // assets-only Workers; assets stay at the top level.
+  "previews": {}
 }
