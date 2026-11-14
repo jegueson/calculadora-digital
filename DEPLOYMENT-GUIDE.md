@@ -30,12 +30,14 @@ Configuration lives in `wrangler.jsonc`:
 Connect the GitHub repository in the Cloudflare dashboard (Workers & Pages → Create → Workers → connect Git). Workers Builds must use:
 
 - Build command: `npm run build`
-- Deploy command: `npm run deploy` (runs `wrangler deploy --no-autoconfig`)
-- Preview deploy command (if separate): `npm run deploy:preview` (runs `wrangler versions upload`; autoconfig does not apply to this command)
+- Deploy command (production branch): `npm run deploy` (runs `wrangler deploy --no-autoconfig`)
+- Preview command (PR / non-production branches): `npm run deploy:preview` (runs `wrangler preview`)
 
-**Important:** do **not** use bare `npx wrangler deploy`. Newer Wrangler enables framework autoconfig by default, detects Next.js, and tries to install OpenNext — which breaks this static-export site (`output: 'export'` / `distDir: 'build'`). The Oct 2026 failure (`ENOENT ... pages-manifest.json` under OpenNext) was that path.
+**Important:** do **not** use bare `npx wrangler deploy` as the only deploy path without review. Newer Wrangler enables framework autoconfig by default, detects Next.js, and can try to install OpenNext — which breaks this static-export site (`output: 'export'` / `distDir: 'build'`). The Oct 2026 failure (`ENOENT ... pages-manifest.json` under OpenNext) was that path.
 
-`npm run deploy` reads `wrangler.jsonc` and uploads `./build` only. Do not set a Cloudflare “output directory” of `.next`. Preview builds should not be promoted until the checks below pass.
+PR preview builds default to `npx wrangler preview`, which **requires** a `previews` block in `wrangler.jsonc` (empty `{}` is fine for this assets-only Worker). Without it, preview deploys fail even when `npm run build` succeeds.
+
+`npm run deploy` / `npm run deploy:preview` read `wrangler.jsonc` and upload `./build` only. Do not set a Cloudflare “output directory” of `.next`. Preview builds should not be promoted until the checks below pass.
 
 Production deploys happen when the connected branch (usually `main`) is updated. Preview deploys can be enabled for pull requests in the same Cloudflare project.
 
