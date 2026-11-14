@@ -39,5 +39,6 @@ test('sitemap lists the home page and published calculators', () => {
   }
   assert.equal(urls.some((url) => url.includes('calculo-hipoteca')), false);
   assert.equal(urls.some((url) => url.includes('calendario-feriados')), false);
+  // home + published calculators + geo hub + city pages
   assert.ok(entries.length >= published.length + 1);
 });

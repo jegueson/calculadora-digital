@@ -52,13 +52,26 @@
 - [ ] `/calculadora-financeira/` — calculadora financeira
 - [ ] `/calculadora-juros-compostos-diarios/` — juros compostos diários
 - [ ] `/calculadora-binario/` — calculadora binário
-- [ ] `/calculadora-dolar/` — cotação informada pelo usuário
-- [ ] `/calculadora-antt/` / frete — frete ANTT (rising Trends)
+- [ ] `/calculadora-dolar/` — conversão com cotação informada pelo usuário
+- [ ] `/calculadora-antt/` / frete — frete ANTT (rising Trends query)
 
 ## ✅ Traffic recovery — Google Trends BR
 
-### PR A — Trend calculator landing pages
-- Tracked on branch `cursor/trends-calculator-pages-440a` (separate PR)
+### Research (completed)
+- [x] Trends related queries for “calculadora” in BR (12 months)
+- [x] Prioritize: gestacional, dias/úteis, juros, regra de três, folha, álcool×gasolina, idade, contagem regressiva
+- [x] Geo interest strongest in DF, RN, PR, MT, PB, SC (relative)
+
+### PR A — Trend calculator landing pages (merged)
+- [x] `/calculadora-gestacional/`
+- [x] `/calculadora-de-dias/`
+- [x] `/calculadora-juros-simples/`
+- [x] `/calculadora-regra-de-tres/`
+- [x] `/calculadora-folha-pagamento/`
+- [x] `/calculadora-alcool-ou-gasolina/`
+- [x] `/calculadora-idade/`
+- [x] `/calculadora-contagem-regressiva/`
+- [x] Registry + sitemap + tests
 
 ### PR B — Geo landing pages
 - [x] Hub `/calculadoras-por-cidade/`
