@@ -9,6 +9,10 @@ export interface ExactAge {
 
 /**
  * Exact age in years, months and days from a birth date to `today`.
+ * Uses civil calendar months: when the birth day-of-month does not exist
+ * in the previous month (e.g. Jan 31 → March), that day is clamped to the
+ * last day of the month so a completed month is kept instead of dumping
+ * everything into leftover days.
  */
 export function calcExactAge(birthDate: Date, today: Date = new Date()): ExactAge | null {
   const birth = startOfLocalDay(birthDate);
@@ -20,20 +24,10 @@ export function calcExactAge(birthDate: Date, today: Date = new Date()): ExactAg
   let days = now.getDate() - birth.getDate();
 
   if (days < 0) {
-    // Borrow full months until the day remainder is non-negative.
-    // Needed when the previous month is shorter than the day deficit
-    // (e.g. born on the 31st, today is March 1 after a 28-day February).
-    let anchorYear = now.getFullYear();
-    let anchorMonth = now.getMonth();
-    while (days < 0) {
-      months -= 1;
-      days += new Date(anchorYear, anchorMonth, 0).getDate();
-      anchorMonth -= 1;
-      if (anchorMonth < 0) {
-        anchorMonth = 11;
-        anchorYear -= 1;
-      }
-    }
+    months -= 1;
+    const daysInPrevMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+    const clampedBirthDay = Math.min(birth.getDate(), daysInPrevMonth);
+    days = now.getDate() + (daysInPrevMonth - clampedBirthDay);
   }
   if (months < 0) {
     years -= 1;

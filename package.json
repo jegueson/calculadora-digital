@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "test": "node --experimental-strip-types --experimental-detect-module --test tests/*.test.ts",
-    "export": "next export"
+    "export": "next export",
+    "deploy": "wrangler deploy --no-autoconfig",
+    "deploy:preview": "wrangler versions upload --no-autoconfig"
   },
   "dependencies": {
     "chart.js": "^4.4.9",
@@ -28,6 +30,7 @@
     "eslint": "^9",
     "eslint-config-next": "^15.5.27",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.162.0"
   }
 }

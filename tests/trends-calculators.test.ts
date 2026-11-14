@@ -66,15 +66,16 @@ test('exact age handles month borrow', () => {
   assert.equal(age.days, 18);
 });
 
-test('exact age never returns negative days after short-month borrow', () => {
+test('exact age keeps a civil month across short Februaries', () => {
   const birth = parseISODateLocal('2026-01-31');
   const today = parseISODateLocal('2026-03-01');
   assert.ok(birth && today);
   const age = calcExactAge(birth, today);
   assert.ok(age);
+  // Jan 31 → Feb 28 (clamped) is one month; Feb 28 → Mar 1 is one day.
   assert.equal(age.years, 0);
-  assert.equal(age.months, 0);
-  assert.equal(age.days, 29);
+  assert.equal(age.months, 1);
+  assert.equal(age.days, 1);
   assert.ok(age.days >= 0);
 });
 
